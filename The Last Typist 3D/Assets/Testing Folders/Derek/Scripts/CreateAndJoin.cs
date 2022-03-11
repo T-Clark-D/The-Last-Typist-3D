@@ -4,11 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
 
+
 public class CreateAndJoin : MonoBehaviourPunCallbacks
 {
     public InputField createInput;
     public InputField joinInput;
-
 
     public void CreateRoom() 
     {

@@ -17,8 +17,7 @@ public class PlayerControllerNetwork : MonoBehaviour
         view = GetComponent<PhotonView>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (view.IsMine)
         {
