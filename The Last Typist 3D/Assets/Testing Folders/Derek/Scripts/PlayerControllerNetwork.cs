@@ -28,6 +28,7 @@ public class PlayerControllerNetwork : MonoBehaviour
 
         m_cam = Camera.main;
         m_RT = m_writtenText.GetComponent<RectTransform>();
+
     }
 
     void Update()
@@ -38,6 +39,8 @@ public class PlayerControllerNetwork : MonoBehaviour
             if (m_isCombatMode)
             {
                 GetTextInput();
+                
+
             }
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -57,6 +60,14 @@ public class PlayerControllerNetwork : MonoBehaviour
         }
     }
 
+    private void Movement()
+    {
+        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        Vector3 direction = input.normalized;
+        Vector3 velocity = direction * m_speed;
+        m_RB.MovePosition(transform.position + velocity * Time.deltaTime);
+    }
+
     private void GetTextInput()
     {
         m_writtenText.text += Input.inputString;
@@ -65,13 +76,16 @@ public class PlayerControllerNetwork : MonoBehaviour
             string backSpacedText = m_writtenText.text.Substring(0, m_writtenText.text.Length - 2);
             m_writtenText.text = backSpacedText;
         }
+
+        if (PhotonNetwork.IsMasterClient)
+        {
+            GameHandler.playerOneType = m_writtenText;
+        }
+        else
+        {
+            GameHandler.playerTwoType = m_writtenText;
+        }
     }
 
-    private void Movement()
-    {
-        Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        Vector3 direction = input.normalized;
-        Vector3 velocity = direction * m_speed;
-        m_RB.MovePosition(transform.position + velocity * Time.deltaTime);
-    }
+
 }
