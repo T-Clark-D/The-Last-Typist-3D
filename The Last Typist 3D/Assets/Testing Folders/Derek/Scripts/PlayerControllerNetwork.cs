@@ -11,28 +11,35 @@ public class PlayerControllerNetwork : MonoBehaviour
     private bool m_isCombatMode;
 
     private Rigidbody m_RB;
-    public GameObject m_writtenTextBox;
-    public Text m_writtenText;
+    [SerializeField] Text m_writtenText;
 
     private PhotonView view;
+
+    // Written Text Script
+    [SerializeField] GameObject m_playerAnchor;
+    private Camera m_cam;
+    private RectTransform m_RT;
 
     // Start is called before the first frame update
     void Start()
     {
         m_RB = GetComponent<Rigidbody>();
         view = GetComponent<PhotonView>();
-        m_writtenText = m_writtenTextBox.GetComponent<Text>();
+
+        m_cam = Camera.main;
+        m_RT = m_writtenText.GetComponent<RectTransform>();
     }
 
     void Update()
     {
         if (view.IsMine)
         {
+            m_RT.position = m_cam.WorldToScreenPoint(m_playerAnchor.transform.position);
             if (m_isCombatMode)
             {
                 GetTextInput();
             }
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Return))
             {
                 m_isCombatMode = !m_isCombatMode;
             }
