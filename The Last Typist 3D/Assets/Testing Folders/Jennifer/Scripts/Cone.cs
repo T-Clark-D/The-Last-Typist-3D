@@ -15,9 +15,9 @@ public class Cone : MonoBehaviour
     public Material material;
 
     // Cone Parameters
-    public float height = 3.0f;
-    public float radius = 5.0f;
-    public int segments = 7;
+    public float height;
+    public float radius;
+    public int segments;
 
     Vector3 pos;
 
@@ -81,6 +81,8 @@ public class Cone : MonoBehaviour
         triangles.Add(segments + 1);
 
         mesh.triangles = triangles.ToArray();
+
+        //transform.localScale.x = 0.2f;
     }
 
     // Update is called once per frame
