@@ -24,26 +24,15 @@ public class RandomArrangement : MonoBehaviour
     private void SpikeSpawn()
     {
         Stack occupiedPos = new Stack();
-        bool occupied = false;
+        //bool occupied = false;
         for(int i = 0; i < 8; i++)
         {
             int randomPos = Random.Range(0, spawnPos.Length); // Generate number between 0 & size of array with spawn positions
 
-            if (occupiedPos.Contains(randomPos))
-            {
-                occupied = true;
-            }
-
-            // While the randomPos generated is occupied, generate a new random number & verify if it's occupied
-            // If it's not occupied, then exit loop
-            while (!occupied) 
+            // While the randomPos generated is occupied, generate a new random number
+            while (occupiedPos.Contains(randomPos))
             {
                 randomPos = Random.Range(0, spawnPos.Length);
-
-                if (!occupiedPos.Contains(randomPos))
-                {
-                    occupied = false;
-                }
             }
 
             occupiedPos.Push(randomPos);
