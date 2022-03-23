@@ -54,7 +54,7 @@ public class PlayerControllerNetwork : MonoBehaviour
             }
         }
 
-        /*        if (PhotonNetwork.IsMasterClient)
+        /*      if (PhotonNetwork.IsMasterClient)
                 {
                     GameHandler.playerOneType = m_writtenText;
                 }
