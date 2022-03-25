@@ -24,6 +24,9 @@ public class PlayerControllerNetwork : MonoBehaviour
     private List<TargetableNetwork> targetedInstances;
     public TargetableNetwork currentTarget;
 
+    // Spike testing
+    [SerializeField] GameObject spikeTrapPrefab;
+
 
     // Start is called before the first frame update
     void Start()
@@ -52,6 +55,11 @@ public class PlayerControllerNetwork : MonoBehaviour
             {
                 m_isCombatMode = !m_isCombatMode;
             }
+
+            if (!m_isCombatMode && Input.GetKeyDown(KeyCode.E))
+            {
+                PhotonNetwork.Instantiate(spikeTrapPrefab.name, transform.position, Quaternion.identity);
+            }
         }
 
         /*      if (PhotonNetwork.IsMasterClient)
@@ -71,6 +79,10 @@ public class PlayerControllerNetwork : MonoBehaviour
             if (!m_isCombatMode)
             {
                 Movement();
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    PhotonNetwork.Instantiate(spikeTrapPrefab.name, transform.position, Quaternion.identity);
+                }
             }
         }
     }

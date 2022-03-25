@@ -263,6 +263,7 @@ MonoBehaviour:
   m_writtenText: {fileID: 6356774792306034907}
   m_playerAnchor: {fileID: 6356774791178457565}
   currentTarget: {fileID: 0}
+  spikeTrapPrefab: {fileID: 3130020022421082109, guid: e787b0e822ab9524aa7f1e27649bee85, type: 3}
 --- !u!114 &6356774791929552565
 MonoBehaviour:
   m_ObjectHideFlags: 0
