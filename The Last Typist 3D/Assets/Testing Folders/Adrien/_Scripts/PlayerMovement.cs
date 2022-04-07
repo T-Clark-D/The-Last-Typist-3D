@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
     public CharacterController cc;
     public float speed;
     public float turningSmoothFactor;
+    public GameObject lockedTarget;
+
     private float turningSmoothVelocity;
     private Vector3 direction;
     private float targetAngle;
@@ -28,13 +30,26 @@ public class PlayerMovement : MonoBehaviour
         direction.x = Input.GetAxisRaw("Horizontal");
         direction.z = Input.GetAxisRaw("Vertical");
         direction.Normalize();
-
         if (direction.magnitude >= 0.1f)
         {
-            targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
-            currentAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turningSmoothVelocity, turningSmoothFactor);
-            transform.rotation = Quaternion.Euler(0f, currentAngle, 0f);
-            cc.Move(direction * speed * Time.deltaTime);
+            if (lockedTarget != null)
+            {
+                {
+                    targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                    currentAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turningSmoothVelocity, turningSmoothFactor);
+                    transform.rotation = Quaternion.Euler(0f, currentAngle, 0f);
+                    cc.Move(direction * speed * Time.deltaTime);
+                }
+            }
+            else
+            {
+                {
+                    targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+                    currentAngle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turningSmoothVelocity, turningSmoothFactor);
+                    transform.rotation = Quaternion.Euler(0f, currentAngle, 0f);
+                    cc.Move(direction * speed * Time.deltaTime);
+                }
+            }
         }
     }
 }
