@@ -6,7 +6,7 @@ public class TileScript : MonoBehaviour
 {
     [SerializeField] public Material baseColor, offsetColor, hoverColor;
     private MeshRenderer MR;
-    private bool buildMode = false;
+    private bool buildMode = true;
     private MeshCollider MC;
     private bool offsetStatus;
 
