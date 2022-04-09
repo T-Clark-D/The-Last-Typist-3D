@@ -18,8 +18,8 @@ public class PlayerControllerNetwork : MonoBehaviour
     private RectTransform m_RT;
 
     // For targetting and killing zombies
-    //private List<TargetableNetwork> targetedInstances;
-    //public TargetableNetwork currentTarget;
+    private List<TargetableNetwork> targetedInstances;
+    public TargetableNetwork currentTarget;
 
     // Spike testing
     [SerializeField] GameObject spikeTrapPrefab;
@@ -33,7 +33,7 @@ public class PlayerControllerNetwork : MonoBehaviour
         m_cam = Camera.main;
         m_RT = m_writtenText.GetComponent<RectTransform>();
 
-        //targetedInstances = new List<TargetableNetwork>();
+        targetedInstances = new List<TargetableNetwork>();
     }
 
     void Update()
@@ -75,7 +75,7 @@ public class PlayerControllerNetwork : MonoBehaviour
 
     private void FindMatchingTarget()
     {
-/*        var TargetableObjects = FindObjectsOfType<TargetableNetwork>();
+        var TargetableObjects = FindObjectsOfType<TargetableNetwork>();
         foreach (TargetableNetwork target in TargetableObjects)
         {
             if (target.targetWord == m_writtenText.text)
@@ -93,7 +93,7 @@ public class PlayerControllerNetwork : MonoBehaviour
             {
                 ((EnemiesNetwork)target).TargetedText(0);
             }
-        }*/
+        }
     }
 
 }
