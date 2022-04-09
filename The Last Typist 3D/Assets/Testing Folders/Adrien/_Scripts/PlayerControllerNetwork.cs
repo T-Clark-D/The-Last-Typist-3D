@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class PlayerControllerNetwork : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class PlayerControllerNetwork : MonoBehaviour
     private RectTransform m_RT;
 
     // For targetting and killing zombies
-    private List<TargetableNetwork> targetedInstances;
+    [SerializeField] private List<GameObject> targetedInstances;
     public TargetableNetwork currentTarget;
 
     // Spike testing
@@ -33,7 +34,7 @@ public class PlayerControllerNetwork : MonoBehaviour
         m_cam = Camera.main;
         m_RT = m_writtenText.GetComponent<RectTransform>();
 
-        targetedInstances = new List<TargetableNetwork>();
+        //targetedInstances = new List<TargetableNetwork>();
     }
 
     void Update()
@@ -75,13 +76,42 @@ public class PlayerControllerNetwork : MonoBehaviour
 
     private void FindMatchingTarget()
     {
+        var a = GameObject.FindGameObjectsWithTag("NPC");
+        if (a == null || a.Length == 0)
+        {
+            return;
+        }
+        targetedInstances = a.ToList();
+        targetedInstances.ToList();
+        targetedInstances.Sort(DistanceToPlayer);
+        Debug.Log("Closest target is " + targetedInstances[0].gameObject.name);
+        foreach (GameObject target in targetedInstances)
+        {
+            var targetScript = target.GetComponent<TargetableNetwork>();
+            if (targetScript.targetWord == m_writtenText.text)
+            {
+                ((EnemiesNetwork)targetScript).Death();
+                targetedInstances.Remove(target);
+                m_writtenText.text = "";
+            }
+            else if (m_writtenText.text.Length < targetScript.targetWord.Length && m_writtenText.text == targetScript.targetWord.Substring(0, m_writtenText.text.Length))
+            {
+                ((EnemiesNetwork)targetScript).TargetedText(m_writtenText.text.Length);
+                currentTarget = targetScript;
+            }
+            else
+            {
+                ((EnemiesNetwork)targetScript).TargetedText(0);
+            }
+        }
+/*
         var TargetableObjects = FindObjectsOfType<TargetableNetwork>();
         foreach (TargetableNetwork target in TargetableObjects)
         {
             if (target.targetWord == m_writtenText.text)
             {
                 ((EnemiesNetwork)target).Death();
-                targetedInstances.Remove(target);
+                //targetedInstances.Remove(target);
                 m_writtenText.text = "";
             }
             else if (m_writtenText.text.Length < target.targetWord.Length && m_writtenText.text == target.targetWord.Substring(0, m_writtenText.text.Length))
@@ -94,6 +124,14 @@ public class PlayerControllerNetwork : MonoBehaviour
                 ((EnemiesNetwork)target).TargetedText(0);
             }
         }
+*/
+    }
+
+    private int DistanceToPlayer(GameObject a, GameObject b)
+    {
+        float squaredDistanceA = (a.transform.position - transform.position).sqrMagnitude;
+        float squaredDistanceB = (b.transform.position - transform.position).sqrMagnitude;
+        return squaredDistanceA.CompareTo(squaredDistanceB);
     }
 
 }
