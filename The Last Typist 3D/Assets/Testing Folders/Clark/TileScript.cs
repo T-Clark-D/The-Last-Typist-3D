@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TileScript : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class TileScript : MonoBehaviour
     private bool buildMode = true;
     private MeshCollider MC;
     private bool offsetStatus;
+    private NavMeshObstacle nmo;
 
     public void Init(bool isOffSet)
     {
@@ -16,6 +18,7 @@ public class TileScript : MonoBehaviour
         MC = GetComponent<MeshCollider>();
         MR = GetComponent<MeshRenderer>();
         MR.material = isOffSet ? offsetColor : baseColor;
+        nmo = GetComponent<NavMeshObstacle>();
     }
 
     private void OnMouseOver()
@@ -26,13 +29,27 @@ public class TileScript : MonoBehaviour
     private void OnMouseExit()
     {
         if (buildMode)
-        MR.material = offsetStatus ? offsetColor : baseColor;
+        {
+            if (!nmo.isActiveAndEnabled)
+            {
+                MR.material = offsetStatus ? offsetColor : baseColor;
+            }
+        }
     }
     private void OnMouseDown()
     {
         if (buildMode)
         {
-            //place object
+            if (!nmo.isActiveAndEnabled)
+            {
+                nmo.enabled = true;
+                MR.material = hoverColor;
+            }
+            else
+            {
+                nmo.enabled = false;
+                MR.material = offsetStatus ? offsetColor : baseColor;
+            }
         }
     }
     public void setBuildMode(bool status)
