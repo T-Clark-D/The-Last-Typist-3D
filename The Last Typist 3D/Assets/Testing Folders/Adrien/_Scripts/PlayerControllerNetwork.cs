@@ -19,7 +19,7 @@ public class PlayerControllerNetwork : MonoBehaviour
     private RectTransform m_RT;
 
     // For targetting and killing zombies
-    [SerializeField] private List<GameObject> targetedInstances;
+    public List<GameObject> targetedInstances;
     public TargetableNetwork currentTarget;
 
     // Spike testing
@@ -40,6 +40,8 @@ public class PlayerControllerNetwork : MonoBehaviour
     void Update()
     {
         m_RT.position = m_cam.WorldToScreenPoint(m_playerAnchor.transform.position);
+        SortClosestNPCs();
+        FaceTarget();
         if (m_isCombatMode)
         {
             GetTextInput();
@@ -58,10 +60,35 @@ public class PlayerControllerNetwork : MonoBehaviour
 
     private void Movement()
     {
+        Vector3 direction = Vector3.zero;
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        Vector3 direction = input.normalized;
+        if (targetedInstances.Count > 0)
+        {
+            if (input.x > 0)
+            {
+                direction = transform.right * input.normalized.x;
+            }
+            else if (input.x < 0)
+            {
+                direction = -transform.right * -input.normalized.x;
+            }
+        }
+        else
+        {
+            direction = input.normalized;
+        }
         Vector3 velocity = direction * m_speed;
         m_RB.MovePosition(transform.position + velocity * Time.deltaTime);
+    }
+
+    private void FaceTarget()
+    {
+        float damping = 10f;
+        Transform lookTarget = targetedInstances[0].transform;
+        var lookPosition = lookTarget.position - transform.position;
+        lookPosition.y = 0;
+        var lookRotation = Quaternion.LookRotation(lookPosition);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * damping);
     }
 
     private void GetTextInput()
@@ -74,7 +101,7 @@ public class PlayerControllerNetwork : MonoBehaviour
         }
     }
 
-    private void FindMatchingTarget()
+    private void SortClosestNPCs()
     {
         var a = GameObject.FindGameObjectsWithTag("NPC");
         if (a == null || a.Length == 0)
@@ -85,6 +112,10 @@ public class PlayerControllerNetwork : MonoBehaviour
         targetedInstances.ToList();
         targetedInstances.Sort(DistanceToPlayer);
         Debug.Log("Closest target is " + targetedInstances[0].gameObject.name);
+    }
+
+    private void FindMatchingTarget()
+    {
         foreach (GameObject target in targetedInstances)
         {
             var targetScript = target.GetComponent<TargetableNetwork>();
