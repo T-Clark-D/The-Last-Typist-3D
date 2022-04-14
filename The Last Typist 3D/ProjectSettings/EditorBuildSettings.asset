@@ -4,5 +4,21 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
+<<<<<<< Updated upstream
   m_Scenes: []
+=======
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Testing Folders/Jennifer/MainMenu.unity
+    guid: 687289e07febde346ad53162a93ae98e
+  - enabled: 1
+    path: Assets/Testing Folders/Derek/Loading.unity
+    guid: 7e65657638cc7ba47943a1ab074d68c6
+  - enabled: 1
+    path: Assets/Testing Folders/Derek/Lobby.unity
+    guid: 0bc9c1a95bbb128499f590580df90a80
+  - enabled: 1
+    path: Assets/Testing Folders/Derek/DerekTestScene.unity
+    guid: 0a357a9b5928bea40b6d439e249c4233
+>>>>>>> Stashed changes
   m_configObjects: {}
