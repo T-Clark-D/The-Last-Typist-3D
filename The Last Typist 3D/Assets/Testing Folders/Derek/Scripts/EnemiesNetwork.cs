@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
+
 
 public class EnemiesNetwork : TargetableNetwork
 {
     public float m_speed;
 
     private Rigidbody m_RB;
-    //public GameObject m_player;
-    //public GameObject m_enemyTextPrefab;
 
     [SerializeField] GameObject m_enemyAnchor;
     [SerializeField] Text m_anchoredText;
@@ -18,7 +16,6 @@ public class EnemiesNetwork : TargetableNetwork
     private Camera m_cam;
     private RectTransform m_RT;
 
-    private PhotonView view;
 
     public void Initialize()
     {
@@ -26,8 +23,6 @@ public class EnemiesNetwork : TargetableNetwork
 
         m_cam = Camera.main;
         m_RT = m_anchoredText.GetComponent<RectTransform>();
-
-        view = GetComponent<PhotonView>();
     }
 
     public void InitializeTextBoxWithLength(int length)
@@ -46,27 +41,7 @@ public class EnemiesNetwork : TargetableNetwork
         return targetWord;
     }
 
-    void TransferOwnership()
-    {
-        view.RequestOwnership();
-        view.RPC(nameof(Kill), RpcTarget.AllBuffered);
-    }
-
-    // https://forum.photonengine.com/discussion/18767/ownership-transfer-to-destroy-object
     public void Death()
-    {
-        if(view.IsMine) // Check if you own it  (view.Owner == PhotonNetwork.LocalPlayer)
-        {
-            PhotonNetwork.Destroy(gameObject);
-        }
-        else
-        {
-            TransferOwnership();
-        }
-    }
-
-    [PunRPC]
-    public void Kill()
     {
         Destroy(gameObject);
     }

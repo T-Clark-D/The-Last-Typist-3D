@@ -1,34 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
+
 
 public class SpawnManager : MonoBehaviour
 {
-    public GameObject playerPrefab;
-    public GameObject enemyPrefab;
-    public Transform playerOnePos;
-    public Transform playerTwoPos;
-    public Transform enemyPos;
-
+    [SerializeField] GameObject[] enemyPrefabs;
+    
 
     // Start is called before the first frame update
     void Start()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.Instantiate(playerPrefab.name, playerOnePos.position, Quaternion.identity);
-            PhotonNetwork.Instantiate(enemyPrefab.name, enemyPos.position, Quaternion.identity);
-        }
-
-        else
-        {
-            PhotonNetwork.Instantiate(playerPrefab.name, playerTwoPos.position, Quaternion.identity);
-        }
-
-
+        Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length-1)], new Vector3(1, 0, 15), Quaternion.Euler(0f, 180f, 0f));
     }
 
+    void Update()
+    {
+        if (GameObject.FindGameObjectsWithTag("NPC").Length == 0 && GameHandler.currentEnemyNum != 0)
+        {
+            Instantiate(enemyPrefabs[Random.Range(0, enemyPrefabs.Length-1)], new Vector3(1, 0, 15), Quaternion.Euler(0f, 180f, 0f));
+        }
+    }
 
 
 }

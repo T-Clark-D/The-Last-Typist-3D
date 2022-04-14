@@ -2,42 +2,47 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
 
 
 public class GameHandler : MonoBehaviour
 {
-    [SerializeField] Text playerOneText;
-    [SerializeField] Text playerTwoText;
-    public static Text playerOneType;
-    public static Text playerTwoType;
-
+    [SerializeField] Text waveText;
+    [SerializeField] Text enemyText;
+    public static int waveNum;
+    public static int totalEnemyNum;
+    public static int currentEnemyNum;
+    
 
     void Start()
     {
-        playerOneType = playerOneText;
-        playerTwoType = playerTwoType;
+        waveNum = 1;
+        totalEnemyNum = Random.Range((waveNum*10)/2, waveNum * 10);
+        currentEnemyNum = totalEnemyNum;
+        waveText.text = "Wave " + waveNum;
+        enemyText.text = "Enemies Left: " + currentEnemyNum;
     }
 
     void Update()
     {
-        if (PhotonNetwork.CountOfPlayersOnMaster == 2)
+        if(currentEnemyNum == 0)
         {
-            SetText();
+            waveNum++;
+            // BUILD PHASE + RESOURCE 
+
+
+
+            Debug.Log("Wave complete");
+            //RestartWave();
         }
-
+        enemyText.text = "Enemies Left: " + currentEnemyNum;
     }
 
-
-    public void SetText()
+    void RestartWave()
     {
-        playerOneText.text = playerOneType.text;
-        playerOneText.transform.position = playerOneType.transform.position;
-        playerTwoText.text = playerTwoType.text;
-        playerTwoText.transform.position = playerTwoType.transform.position;
+        totalEnemyNum = Random.Range((waveNum * 10) / 2, waveNum * 10);
+        currentEnemyNum = totalEnemyNum;
+        waveText.text = "Wave " + waveNum;
+        enemyText.text = "Enemies Left: " + currentEnemyNum;
     }
-
-
-
 
 }

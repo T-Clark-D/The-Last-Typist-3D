@@ -9,7 +9,8 @@ public class BasicZombieNetwork : EnemiesNetwork
     void Start()
     {
         base.Initialize();
-        base.InitializeTextBoxWithLength(m_wordLength);
+        int wordLength = Random.Range(1, m_wordLength);
+        base.InitializeTextBoxWithLength(wordLength);
     }
 
     // Update is called once per frame

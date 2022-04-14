@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Photon.Pun;
+using System.Linq;
 
 public class PlayerControllerNetwork : MonoBehaviour
 {
@@ -13,15 +13,13 @@ public class PlayerControllerNetwork : MonoBehaviour
     private Rigidbody m_RB;
     [SerializeField] Text m_writtenText;
 
-    private PhotonView view;
-
     // Written Text Script
     [SerializeField] GameObject m_playerAnchor;
     private Camera m_cam;
     private RectTransform m_RT;
 
     // For targetting and killing zombies
-    private List<TargetableNetwork> targetedInstances;
+    [SerializeField] private List<GameObject> targetedInstances;
     public TargetableNetwork currentTarget;
 
     // Spike testing
@@ -32,59 +30,31 @@ public class PlayerControllerNetwork : MonoBehaviour
     void Start()
     {
         m_RB = GetComponent<Rigidbody>();
-        view = GetComponent<PhotonView>();
 
         m_cam = Camera.main;
         m_RT = m_writtenText.GetComponent<RectTransform>();
 
-        targetedInstances = new List<TargetableNetwork>();
+        //targetedInstances = new List<TargetableNetwork>();
     }
 
     void Update()
     {
-        if (view.IsMine)
+        m_RT.position = m_cam.WorldToScreenPoint(m_playerAnchor.transform.position);
+        if (m_isCombatMode)
         {
-            m_RT.position = m_cam.WorldToScreenPoint(m_playerAnchor.transform.position);
-            if (m_isCombatMode)
-            {
-                GetTextInput();
-                FindMatchingTarget();
-
-            }
-            if (Input.GetKeyDown(KeyCode.Return))
-            {
-                m_isCombatMode = !m_isCombatMode;
-            }
-
-            if (!m_isCombatMode && Input.GetKeyDown(KeyCode.E))
-            {
-                PhotonNetwork.Instantiate(spikeTrapPrefab.name, transform.position, Quaternion.identity);
-            }
+            GetTextInput();
+            FindMatchingTarget();
+        }
+        else if (!m_isCombatMode)
+        {
+            Movement();
+        }
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            m_isCombatMode = !m_isCombatMode;
+            m_writtenText.text = "";
         }
 
-        /*      if (PhotonNetwork.IsMasterClient)
-                {
-                    GameHandler.playerOneType = m_writtenText;
-                }
-                else
-                {
-                    GameHandler.playerTwoType = m_writtenText;
-                }*/
-    }
-
-    void FixedUpdate()
-    {
-        if (view.IsMine)
-        {
-            if (!m_isCombatMode)
-            {
-                Movement();
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    PhotonNetwork.Instantiate(spikeTrapPrefab.name, transform.position, Quaternion.identity);
-                }
-            }
-        }
     }
 
     private void Movement()
@@ -107,25 +77,46 @@ public class PlayerControllerNetwork : MonoBehaviour
 
     private void FindMatchingTarget()
     {
-        var TargetableObjects = FindObjectsOfType<TargetableNetwork>();
-        foreach (TargetableNetwork target in TargetableObjects)
+        var a = GameObject.FindGameObjectsWithTag("NPC");
+
+        if (a == null || a.Length == 0)
         {
-            if (target.targetWord == m_writtenText.text)
+            return;
+        }
+        targetedInstances = a.ToList();
+        targetedInstances.ToList();
+        targetedInstances.Sort(DistanceToPlayer);
+
+        foreach (GameObject target in targetedInstances)
+        {
+            var targetScript = target.GetComponent<TargetableNetwork>();
+            if (targetScript.targetWord == m_writtenText.text)
             {
-                ((EnemiesNetwork)target).Death();
+                GameHandler.currentEnemyNum--;
+                ((EnemiesNetwork)targetScript).Death();
                 targetedInstances.Remove(target);
                 m_writtenText.text = "";
+
             }
-            else if (m_writtenText.text.Length < target.targetWord.Length && m_writtenText.text == target.targetWord.Substring(0, m_writtenText.text.Length))
+            else if (m_writtenText.text.Length < targetScript.targetWord.Length && m_writtenText.text == targetScript.targetWord.Substring(0, m_writtenText.text.Length))
             {
-                ((EnemiesNetwork)target).TargetedText(m_writtenText.text.Length);
-                currentTarget = target;
+                ((EnemiesNetwork)targetScript).TargetedText(m_writtenText.text.Length);
+                currentTarget = targetScript;
             }
             else
             {
-                ((EnemiesNetwork)target).TargetedText(0);
+                ((EnemiesNetwork)targetScript).TargetedText(0);
             }
         }
+
+
+    }
+
+    private int DistanceToPlayer(GameObject a, GameObject b)
+    {
+        float squaredDistanceA = (a.transform.position - transform.position).sqrMagnitude;
+        float squaredDistanceB = (b.transform.position - transform.position).sqrMagnitude;
+        return squaredDistanceA.CompareTo(squaredDistanceB);
     }
 
 }
