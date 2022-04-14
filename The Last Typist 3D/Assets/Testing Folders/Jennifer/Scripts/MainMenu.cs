@@ -14,7 +14,7 @@ public class MainMenu : MonoBehaviour
 
     public void PlaySolo()
     {
-        SceneManager.LoadScene("DerekTestScene");
+        SceneManager.LoadScene("GameScene");
     }
 
     public void PlayOnline()
