@@ -41,7 +41,7 @@ public class PlayerControllerNetwork : MonoBehaviour
     {
         m_RT.position = m_cam.WorldToScreenPoint(m_playerAnchor.transform.position);
         SortClosestNPCs();
-        FaceTarget();
+        //FaceTarget();
         if (m_isCombatMode)
         {
             GetTextInput();
@@ -62,21 +62,21 @@ public class PlayerControllerNetwork : MonoBehaviour
     {
         Vector3 direction = Vector3.zero;
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        if (targetedInstances.Count > 0)
-        {
-            if (input.x > 0)
-            {
-                direction = transform.right * input.normalized.x;
-            }
-            else if (input.x < 0)
-            {
-                direction = -transform.right * -input.normalized.x;
-            }
-        }
-        else
-        {
+        //if (targetedInstances.Count > 0)
+        //{
+        //    if (input.x > 0)
+        //    {
+        //        direction = transform.right * input.normalized.x;
+        //    }
+        //    else if (input.x < 0)
+        //    {
+        //        direction = -transform.right * -input.normalized.x;
+        //    }
+        //}
+        //else
+        //{
             direction = input.normalized;
-        }
+        //}
         Vector3 velocity = direction * m_speed;
         m_RB.MovePosition(transform.position + velocity * Time.deltaTime);
     }
