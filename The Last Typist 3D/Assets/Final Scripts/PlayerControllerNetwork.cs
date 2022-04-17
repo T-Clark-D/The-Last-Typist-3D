@@ -25,11 +25,17 @@ public class PlayerControllerNetwork : MonoBehaviour
     // Spike testing
     [SerializeField] GameObject spikeTrapPrefab;
 
+    public MainCharacter_Controller MCC;
+    private bool isWalking = false;
+   
+
     
 
     // Start is called before the first frame update
     void Start()
     {
+
+        MCC = GetComponentInChildren<MainCharacter_Controller>();
         m_RB = GetComponent<Rigidbody>();
 
         m_cam = Camera.main;
@@ -56,6 +62,8 @@ public class PlayerControllerNetwork : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 m_isCombatMode = !m_isCombatMode;
+                MCC.SwitchMode();
+                
                 m_writtenText.text = "";
             }
         }
@@ -75,14 +83,34 @@ public class PlayerControllerNetwork : MonoBehaviour
     private void Movement()
     {
         Vector3 input = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+        //animations
+        AnimateWalking(input);
+        //face correct direction
+        if(input.magnitude!=0)
+        gameObject.transform.forward = input;
         Vector3 direction = input.normalized;
         Vector3 velocity = direction * m_speed;
         m_RB.MovePosition(transform.position + velocity * Time.deltaTime);
     }
 
+    private void AnimateWalking(Vector3 input)
+    {
+        if (input.magnitude > 0 && !isWalking)
+        {
+            MCC.StartOrStopWalkAnimation();
+            isWalking = true;
+        }
+        else if (input.magnitude == 0 && isWalking)
+        {
+            MCC.StartOrStopWalkAnimation();
+            isWalking = false;
+        }
+    }
+
     private void GetTextInput()
     {
         m_writtenText.text += Input.inputString;
+       
         if (Input.GetKeyDown(KeyCode.Backspace) && m_writtenText.text.Length > 1)
         {
             string backSpacedText = m_writtenText.text.Substring(0, m_writtenText.text.Length - 2);

@@ -8,6 +8,10 @@ public class TileScript : MonoBehaviour
     private MeshRenderer MR;
     private MeshCollider MC;
     private bool offsetStatus;
+    private GameObject instantiatedObject;
+
+    public GameObject fleshBagPrefab;
+    public GameObject spikesPrefab;
 
     public void Init(bool isOffSet)
     {
@@ -22,6 +26,7 @@ public class TileScript : MonoBehaviour
         if(GameHandler.buildMode)
         MR.material = hoverColor;
     }
+
     private void OnMouseExit()
     {
         if (GameHandler.buildMode)
@@ -31,7 +36,17 @@ public class TileScript : MonoBehaviour
     {
         if (GameHandler.buildMode)
         {
-            //place object
+            
+            if(GameHandler.selectedObject == "FleshBags")
+            {
+                instantiatedObject = Instantiate(fleshBagPrefab, gameObject.transform.position , new Quaternion(-0.50000006f, -0.49999994f, -0.49999997f, 0.50000006f));
+                //carve a whole in the nav mesh
+            }
+            if (GameHandler.selectedObject == "SpikeTraps")
+            {
+                instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, Quaternion.identity);
+                //carve a whole in the nav mesh
+            }
         }
     }
 }

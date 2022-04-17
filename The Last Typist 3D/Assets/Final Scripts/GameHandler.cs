@@ -22,9 +22,11 @@ public class GameHandler : MonoBehaviour
     public static bool buildMode;
     public bool resourceGatheringModeInitialised;
 
+    public static string selectedObject = "FleshBags";
 
     void Start()
     {
+        //selectedObject = null;
         resourceGatheringMode = false;
         buildMode = false;
         waveMode = true;
