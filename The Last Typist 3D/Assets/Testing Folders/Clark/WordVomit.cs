@@ -16,30 +16,36 @@ public class WordVomit : MonoBehaviour{
     List<string> nineLetterWords;
     List<string> tenLetterWords;
     string readFromFilePath;
+    public bool isInitialised = false;
 
     // Use this for initialization
-    public void Start() {
-        
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthOneEnglish.txt";
-        oneLetterWords = File.ReadAllLines(readFromFilePath).ToList();
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthTwoEnglish.txt";
-        twoLetterWords = File.ReadAllLines(readFromFilePath).ToList();
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthThreeEnglish.txt";
-        threeLetterWords = File.ReadAllLines(readFromFilePath).ToList();
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthFourEnglish.txt";
-        fourLetterWords = File.ReadAllLines(readFromFilePath).ToList();
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthFiveEnglish.txt";
-        fiveLetterWords = File.ReadAllLines(readFromFilePath).ToList();
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthSixEnglish.txt";
-        sixLetterWords = File.ReadAllLines(readFromFilePath).ToList();
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthSevenEnglish.txt";
-        sevenLetterWords = File.ReadAllLines(readFromFilePath).ToList();
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthEightEnglish.txt";
-        eightLetterWords = File.ReadAllLines(readFromFilePath).ToList();
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthNineEnglish.txt";
-        nineLetterWords = File.ReadAllLines(readFromFilePath).ToList();
-        readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthTenEnglish.txt";
-        tenLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+
+    public void initialize()
+    {
+        if (!isInitialised)
+        {
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthOneEnglish.txt";
+            oneLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthTwoEnglish.txt";
+            twoLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthThreeEnglish.txt";
+            threeLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthFourEnglish.txt";
+            fourLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthFiveEnglish.txt";
+            fiveLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthSixEnglish.txt";
+            sixLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthSevenEnglish.txt";
+            sevenLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthEightEnglish.txt";
+            eightLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthNineEnglish.txt";
+            nineLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+            readFromFilePath = Application.streamingAssetsPath + "/TextFiles/lengthTenEnglish.txt";
+            tenLetterWords = File.ReadAllLines(readFromFilePath).ToList();
+        }
+       
     }
 	
 

@@ -22,7 +22,7 @@ public class GridManager : MonoBehaviour
         {
             for (int z = 0; z < height; z++)
             {
-                var spawnedTile = Instantiate(Tile, new Vector3(x,0,z), Quaternion.identity);
+                var spawnedTile = Instantiate(Tile, new Vector3(x,0,z), Quaternion.identity, gameObject.transform);
                 spawnedTile.name = $"Tile {x}{z}";
 
                 var isOffset = (x % 2 == 0 && z % 2 != 0) || (x % 2 != 0 && z % 2 == 0);
@@ -42,12 +42,12 @@ public class GridManager : MonoBehaviour
         }
         return null;
     }
-
+    /*
     public void setGridToBuildMode(bool status)
     {
         foreach (var tile in tiles)
         {
             tile.Value.setBuildMode(status);
         }
-    }
+    }*/
 }

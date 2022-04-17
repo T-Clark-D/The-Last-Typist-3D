@@ -6,7 +6,6 @@ public class TileScript : MonoBehaviour
 {
     [SerializeField] public Material baseColor, offsetColor, hoverColor;
     private MeshRenderer MR;
-    private bool buildMode = true;
     private MeshCollider MC;
     private bool offsetStatus;
 
@@ -20,23 +19,19 @@ public class TileScript : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if(buildMode)
+        if(GameHandler.buildMode)
         MR.material = hoverColor;
     }
     private void OnMouseExit()
     {
-        if (buildMode)
+        if (GameHandler.buildMode)
         MR.material = offsetStatus ? offsetColor : baseColor;
     }
     private void OnMouseDown()
     {
-        if (buildMode)
+        if (GameHandler.buildMode)
         {
             //place object
         }
-    }
-    public void setBuildMode(bool status)
-    {
-        buildMode = status;
     }
 }
