@@ -1,14 +1,17 @@
 fileFormatVersion: 2
-guid: b812db01757c584439a3bab906559724
+guid: 1c0c7fbf091c2d74b9ddc9ea722ffeb0
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -3357494394589733605
-    second: Spike_Raise
+      74: 4781951162920444690
+    second: Rest_Position
   - first:
-      74: -8914099429859857156
-    second: Spike_Lower
+      74: -1855364194104593312
+    second: Armature|SpikeAction
+  - first:
+      74: -4738338977195520429
+    second: Swing
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -38,11 +41,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Spike_Raise
-      takeName: Spike|SpikeAction
+      name: Rest_Position
+      takeName: Armature|ArmatureAction
       internalID: 0
-      firstFrame: 1
-      lastFrame: 3
+      firstFrame: 0
+      lastFrame: 1
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -67,11 +70,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Spike_Lower
-      takeName: Spike|SpikeAction
+      name: Swing
+      takeName: Armature|ArmatureAction
       internalID: 0
-      firstFrame: 5
-      lastFrame: 35
+      firstFrame: 1
+      lastFrame: 100
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
