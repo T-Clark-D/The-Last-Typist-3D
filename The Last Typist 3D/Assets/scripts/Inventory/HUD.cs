@@ -1,9 +1,12 @@
 ﻿
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public class HUD : MonoBehaviour , IcraftingItem
+public class HUD : MonoBehaviour
 {
     public Inventory Inventory;
     
@@ -46,7 +49,7 @@ public class HUD : MonoBehaviour , IcraftingItem
                 }
                 //store a reference to the item
                 
-                //itemDragHandler.Item = e.Item;
+                itemDragHandler.Item = e.Item;
                 //TODO Store a reference to the item
                 break;
             }
@@ -101,20 +104,5 @@ public class HUD : MonoBehaviour , IcraftingItem
     void Update()
     {
         
-    }
-
-    public void ConsumeItem(string itemName)
-    {
-        
-    }
-
-    public void ProduceItem(string itemName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int itemCount(string itemName)
-    {
-        throw new NotImplementedException();
     }
 }
