@@ -1,9 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
+[Serializable]
 public class InventoryItemBase : MonoBehaviour, IInventoryItem
 {
+    
     public virtual string Name
     {
         get
@@ -14,7 +15,7 @@ public class InventoryItemBase : MonoBehaviour, IInventoryItem
 
     public Sprite _Image;
 
-    public Sprite Image
+    public virtual Sprite Image
     {
         get
         {
@@ -22,7 +23,47 @@ public class InventoryItemBase : MonoBehaviour, IInventoryItem
         }
     }
 
-    public InventorySlot Slot { get => throw new System.NotImplementedException(); set => throw new System.NotImplementedException(); }
+    public bool _isSelected;
+
+    public virtual bool isSelected
+    {
+        get
+        {
+            return _isSelected;
+        }
+        set
+        {
+            isSelected = _isSelected;
+        }
+    }
+
+    public int _itemAmount;
+
+    public virtual int itemAmount
+    {
+        get
+        {
+            return _itemAmount;
+        }
+        set
+        {
+            itemAmount = _itemAmount;
+        }
+    }
+
+    public InventorySlot _slot;
+
+    public virtual InventorySlot Slot
+    {
+        get
+        {
+            return _slot;
+        }
+        set
+        {
+            Slot = _slot;
+        }
+    }
 
     public virtual void OnPickup()
     {
@@ -41,9 +82,8 @@ public class InventoryItemBase : MonoBehaviour, IInventoryItem
         }
     }
 
-    public virtual void OnUse()
+    public virtual void OnUse(bool onUse)
     {
         //TODO ... Move a logic like this to a base class or helper
-        
     }
 }

@@ -8,10 +8,14 @@ public interface IInventoryItem
     string Name { get; }
     Sprite Image { get; }
 
+    int itemAmount { get; set; }
+
+    bool isSelected { get; set; }
+
     void OnPickup();
 
     void OnDrop();
-    void OnUse();
+    void OnUse(bool onUse);
 
     InventorySlot Slot { get; set; }
 }
@@ -25,17 +29,4 @@ public class IInventoryEventArgs : EventArgs
     }
     public IInventoryItem Item;
 }
-    public class inventory : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-}
+  

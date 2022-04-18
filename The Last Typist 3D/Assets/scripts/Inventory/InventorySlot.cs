@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using System.Collections.Generic;
 
 public class InventorySlot
 {
-    private Stack<IInventoryItem> mItemStack = new Stack<IInventoryItem>();
+    private Stack<InventoryItemBase> mItemStack = new Stack<InventoryItemBase>();
+    public InventoryItemBase Item;
 
     private int mId = 0;
     
@@ -18,9 +17,10 @@ public class InventorySlot
         get { return mId; }
     }
 
-    public void AddItem(IInventoryItem item)
+    public void AddItem(InventoryItemBase item)
     {
-        item.Slot = this;
+        item._slot = this;
+        Item = item;
         mItemStack.Push(item);
     }
 
@@ -36,14 +36,14 @@ public class InventorySlot
         }
     }
 
-    public bool IsStackable(IInventoryItem item)
+    public bool IsStackable(InventoryItemBase item)
     {
         if (IsEmpty)
         {
             return false;
         }
 
-        IInventoryItem first = mItemStack.Peek();
+        InventoryItemBase first = mItemStack.Peek();
         if(first.Name == item.Name)
         {
             return true;
@@ -61,14 +61,14 @@ public class InventorySlot
         get { return mItemStack.Count; }
     }
 
-    public bool Remove(IInventoryItem item)
+    public bool Remove(InventoryItemBase item)
     {
         if (IsEmpty)
         {
             return false;
         }
 
-        IInventoryItem first = mItemStack.Peek();
+        InventoryItemBase first = mItemStack.Peek();
         if(first.Name == item.Name)
         {
             mItemStack.Peek();
