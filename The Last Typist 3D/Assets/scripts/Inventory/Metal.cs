@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Metal : InventoryItemBase
 {
-    public override string Name
+    public string Name
     {
         get
         {
@@ -12,17 +12,9 @@ public class Metal : InventoryItemBase
         }
     }
 
-
-    public override Sprite Image
-    {
-        get
-        {
-            return _Image;
-        }
-    }
-    public override void OnUse(bool onUse)
+    public override void OnUse()
     {
         //ToDo : do smth with the object....
-        
+        base.OnUse();
     }
 }
