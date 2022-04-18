@@ -7,9 +7,12 @@ public class TileScript : MonoBehaviour
 {
     [SerializeField] public Material baseColor, offsetColor, hoverColor;
     private MeshRenderer MR;
-    private bool buildMode = true;
     private MeshCollider MC;
     private bool offsetStatus;
+    private GameObject instantiatedObject;
+
+    public GameObject fleshBagPrefab;
+    public GameObject spikesPrefab;
     private NavMeshObstacle nmo;
 
     public void Init(bool isOffSet)
@@ -23,11 +26,14 @@ public class TileScript : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if(buildMode)
+        if(GameHandler.buildMode)
         MR.material = hoverColor;
     }
+
     private void OnMouseExit()
     {
+        if (GameHandler.buildMode)
+        MR.material = offsetStatus ? offsetColor : baseColor;
         if (buildMode)
         {
             if (!nmo.isActiveAndEnabled)
@@ -38,8 +44,18 @@ public class TileScript : MonoBehaviour
     }
     private void OnMouseDown()
     {
-        if (buildMode)
+        if (GameHandler.buildMode)
         {
+            
+            if(GameHandler.selectedObject == "FleshBags")
+            {
+                instantiatedObject = Instantiate(fleshBagPrefab, gameObject.transform.position , new Quaternion(-0.50000006f, -0.49999994f, -0.49999997f, 0.50000006f));
+                //carve a whole in the nav mesh
+            }
+            if (GameHandler.selectedObject == "SpikeTraps")
+            {
+                instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, Quaternion.identity);
+                //carve a whole in the nav mesh
             if (!nmo.isActiveAndEnabled)
             {
                 nmo.enabled = true;
@@ -51,9 +67,5 @@ public class TileScript : MonoBehaviour
                 MR.material = offsetStatus ? offsetColor : baseColor;
             }
         }
-    }
-    public void setBuildMode(bool status)
-    {
-        buildMode = status;
     }
 }
