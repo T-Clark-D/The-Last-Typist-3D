@@ -3,8 +3,6 @@
 public class InventorySlot
 {
     private Stack<InventoryItemBase> mItemStack = new Stack<InventoryItemBase>();
-    public InventoryItemBase Item;
-
     private int mId = 0;
     
     public InventorySlot(int id)
@@ -20,7 +18,6 @@ public class InventorySlot
     public void AddItem(InventoryItemBase item)
     {
         item._slot = this;
-        Item = item;
         mItemStack.Push(item);
     }
 

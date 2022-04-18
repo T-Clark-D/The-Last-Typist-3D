@@ -3,7 +3,7 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class HUD : MonoBehaviour , IcraftingItem
+public class HUD : MonoBehaviour 
 {
     public Inventory Inventory;
     
@@ -28,7 +28,6 @@ public class HUD : MonoBehaviour , IcraftingItem
 
             UnityEngine.UI.Image image = imageTransform.GetComponent<UnityEngine.UI.Image>();
             Text txtCount = textTransform.GetComponent<Text>(); 
-            ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
            
             //we found empty slot
             if (index == e.Item.Slot.Id)
@@ -37,16 +36,16 @@ public class HUD : MonoBehaviour , IcraftingItem
                 image.sprite = e.Item.Image;
 
                 int itemCount = e.Item.Slot.Count;
-                if (itemCount > 1)
+                if (itemCount > 0)
                 {
                     txtCount.text = itemCount.ToString();
                 }
                 else
                 {
-                    txtCount.text = "";
+                    txtCount.text = "0";
                 }
-                //store a reference to the item
                 
+                //store a reference to the item
                 //itemDragHandler.Item = e.Item;
                 //TODO Store a reference to the item
                 break;
@@ -69,16 +68,11 @@ public class HUD : MonoBehaviour , IcraftingItem
             UnityEngine.UI.Image image = imageTransform.GetComponent<UnityEngine.UI.Image>();
             Text txtCount = textTransform.GetComponent<Text>();
 
-            ItemDragHandler itemDragHandler = imageTransform.GetComponent<ItemDragHandler>();
-
-            //we found Item in the UI
-            if (itemDragHandler.Item == null)
-                continue;
+                       
             //found the slot to remove from
             if (index == e.Item.Slot.Id)
             {
                 int itemCount = e.Item.Slot.Count;
-                itemDragHandler.Item = e.Item.Slot.FirstItem;
 
                 if(itemCount < 2)
                 {
@@ -102,20 +96,5 @@ public class HUD : MonoBehaviour , IcraftingItem
     void Update()
     {
         
-    }
-
-    public void ConsumeItem(string itemName)
-    {
-        
-    }
-
-    public void ProduceItem(string itemName)
-    {
-        throw new NotImplementedException();
-    }
-
-    public int itemCount(string itemName)
-    {
-        throw new NotImplementedException();
     }
 }

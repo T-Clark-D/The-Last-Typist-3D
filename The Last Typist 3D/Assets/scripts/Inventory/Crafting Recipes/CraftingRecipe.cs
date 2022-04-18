@@ -18,12 +18,13 @@ public class CraftingRecipe : ScriptableObject
     public List<ItemAmount> Materials;
     public List<ItemAmount> Results;
     public ResourceManager ResourceManager;
+    public InventoryItemBase Item;
 
     public bool canCraft (Inventory inventory)
     {
         foreach( ItemAmount itemAmount in Materials)
         {
-            if(ResourceManager.itemCount(itemAmount.itemName) < itemAmount.Amount)
+            if(ResourceManager.itemCount(itemAmount.itemName , null) < itemAmount.Amount)
             {
                 return false;
             }
@@ -39,7 +40,7 @@ public class CraftingRecipe : ScriptableObject
             {
                 for(int i=0; i < itemAmount.Amount; i++)
                 {
-                    ResourceManager.ConsumeItem(itemAmount.itemName);
+                    ResourceManager.ConsumeItem(itemAmount.itemName , null);
                 }
             }
 
@@ -47,7 +48,7 @@ public class CraftingRecipe : ScriptableObject
             {
                 for (int i = 0; i < itemAmount.Amount; i++)
                 {
-                    inventory.ProduceItem(itemAmount.itemName);
+                    inventory.ProduceItem(itemAmount.itemName , Item);
                 }
             }
         }

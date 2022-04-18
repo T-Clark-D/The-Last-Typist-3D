@@ -2,48 +2,48 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManager : MonoBehaviour , IcraftingItem
 {
-    public int MetalCount;
-    public int FleshCount;
-    public int GunPowderCount;
-    public int ClothCount;
+    public static int MetalCount;
+    public static int FleshCount;
+    public static int GunPowderCount;
+    public static int ClothCount;
     Text MetalTxt ;
     Text FleshTxt;
     Text GunPowderTxt;
     Text ClothTxt;
 
-    public int getMetalCount()
+    public static int getMetalCount()
     {
         return MetalCount;
     }
-    public void setMetalCount(int metalCnt)
+    public static void setMetalCount(int metalCnt)
     {
         MetalCount = metalCnt;
     }
 
-    public int getFleshCount()
+    public static int getFleshCount()
     {
         return FleshCount;
     }
-    public void setFleshCount(int fleshCnt)
+    public static void setFleshCount(int fleshCnt)
     {
         FleshCount = fleshCnt;
     }
 
-    public int getGunPowderCount()
+    public static int getGunPowderCount()
     {
         return GunPowderCount;
     }
-    public void setGunPowderCount(int gunpowderCnt)
+    public static void setGunPowderCount(int gunpowderCnt)
     {
         GunPowderCount = gunpowderCnt;
     }
-    public int getClothCount()
+    public static int getClothCount()
     {
         return ClothCount;
     }
-    public void setClothCount(int clothCnt)
+    public static void setClothCount(int clothCnt)
     {
         ClothCount = clothCnt;
     }
@@ -79,7 +79,7 @@ public class ResourceManager : MonoBehaviour
         ClothCount = int.Parse(ClothTxt.text);
     }
 
-    public int itemCount(string itemName)
+    public int itemCount(string itemName, InventoryItemBase item)
     {
         if (itemName == "flesh")
         {
@@ -104,7 +104,7 @@ public class ResourceManager : MonoBehaviour
         return 0;
     }
 
-    public void ConsumeItem(string itemName)
+    public void ConsumeItem(string itemName , InventoryItemBase item)
     {
 
         if (itemName == "flesh")
@@ -131,5 +131,10 @@ public class ResourceManager : MonoBehaviour
             GunPowderTxt.text = GunPowderCount.ToString();
         }
 
+    }
+
+    public void ProduceItem(string itemName, InventoryItemBase item)
+    {
+        throw new System.NotImplementedException();
     }
 }
