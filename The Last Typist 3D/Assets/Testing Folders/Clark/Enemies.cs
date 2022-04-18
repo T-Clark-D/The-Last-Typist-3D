@@ -9,7 +9,6 @@ public class Enemies : Targetable
     public GameObject m_player;
     public GameObject m_enemyTextPrefab;
     public float m_speed;
-    public WordVomit WV;
 
     public GameObject anchoredText;
 
@@ -17,8 +16,6 @@ public class Enemies : Targetable
     {
         anchor = transform.GetChild(0);
         m_RB = GetComponent<Rigidbody>();
-        WV = GameObject.Find("WordVomit").GetComponent<WordVomit>();
-        m_player = GameObject.Find("SpherePlayer");
     }
 
     public void InitializeTextBoxWithLength(int length)
@@ -28,27 +25,19 @@ public class Enemies : Targetable
         //sets the anchor on the prefap to that of the anchor of the zombie
         anchoredText.GetComponent<EnemyTextBehavior>().SetAnchor(anchor.gameObject);
         //Will return word of set length
-        WV.initialize();
-        WV.isInitialised = true;
-        targetWord = WV.getRandomWord(length);
-        anchoredText.GetComponent<Text>().text = targetWord;
-       
+        anchoredText.GetComponent<Text>().text = RandomWordOfLength(length);
+    }
+
+    private string RandomWordOfLength(int length)
+    {
+        targetWord = "tempword" + length.ToString();
+        return targetWord;
     }
 
     public void Death()
     {
-        gameObject.tag = "corpse";
         Destroy(anchoredText);
-        gameObject.GetComponent<Enemies>().enabled = false;
         //this will need to be changed to going limp so that the dead targets can be targetted in resource collection mode
-        //Destroy(gameObject);
-    }
-
-    public void GrindUp()
-    {
-        //add appropriate resources
-        Debug.Log("Adding reources");
-        Destroy(anchoredText);
         Destroy(gameObject);
     }
 
