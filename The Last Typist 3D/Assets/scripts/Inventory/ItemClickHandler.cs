@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
-public class ItemClickHandler : MonoBehaviour
+public class ItemClickHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
 {
     public HUD hud;
     public InventoryItemBase item;
@@ -29,26 +30,17 @@ public class ItemClickHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetMouseButtonDown(0)) Debug.Log("Pressed left click.");
         if (Input.GetMouseButtonDown(1))
         {
-            //Debug.Log("Pressed right click.");
+            Debug.Log("Pressed right click.");
             CraftItem();
         }
-        if (Input.GetMouseButtonDown(2)) Debug.Log("Pressed middle click.");
+        if (Input.GetMouseButtonDown(2)) Debug.Log("Pressed middle click.");*/
     }
 
-    public void OnItemClicked()
-    {
-        //ItemDragHandler dragHandler =
-        //gameObject.transform.Find("ItemImage").GetComponent<ItemDragHandler>();
-        //IInventoryItem item = dragHandler.Item;
-        
-        ToggleCanvas();
-        ToggleItemSelected();
-    }
 
-    
 
     public void ToggleCanvas()
     {
@@ -77,5 +69,28 @@ public class ItemClickHandler : MonoBehaviour
     public void CraftItem()
     {
         recipe.craft(hud.Inventory);
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        ToggleCanvas();
+    }
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        ToggleCanvas();
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            CraftItem();
+            Debug.Log("crafting item" + item.name);
+        }
+        if (eventData.button == PointerEventData.InputButton.Left)
+        {
+            ToggleItemSelected();
+            Debug.Log("selecting item" + item.name);
+        }
     }
 }

@@ -10,6 +10,7 @@ public class HUD : MonoBehaviour , IcraftingItem
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("adding item");
         Inventory.ItemAdded += InventoryScript_ItemAdded;
         Inventory.ItemRemoved += InventoryScript_ItemRemoved;
     }
