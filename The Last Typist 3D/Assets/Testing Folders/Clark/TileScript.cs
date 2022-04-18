@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class TileScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class TileScript : MonoBehaviour
 
     public GameObject fleshBagPrefab;
     public GameObject spikesPrefab;
+    private NavMeshObstacle nmo;
 
     public void Init(bool isOffSet)
     {
@@ -19,6 +21,7 @@ public class TileScript : MonoBehaviour
         MC = GetComponent<MeshCollider>();
         MR = GetComponent<MeshRenderer>();
         MR.material = isOffSet ? offsetColor : baseColor;
+        nmo = GetComponent<NavMeshObstacle>();
     }
 
     private void OnMouseOver()
@@ -31,6 +34,13 @@ public class TileScript : MonoBehaviour
     {
         if (GameHandler.buildMode)
         MR.material = offsetStatus ? offsetColor : baseColor;
+        if (buildMode)
+        {
+            if (!nmo.isActiveAndEnabled)
+            {
+                MR.material = offsetStatus ? offsetColor : baseColor;
+            }
+        }
     }
     private void OnMouseDown()
     {
@@ -46,6 +56,15 @@ public class TileScript : MonoBehaviour
             {
                 instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, Quaternion.identity);
                 //carve a whole in the nav mesh
+            if (!nmo.isActiveAndEnabled)
+            {
+                nmo.enabled = true;
+                MR.material = hoverColor;
+            }
+            else
+            {
+                nmo.enabled = false;
+                MR.material = offsetStatus ? offsetColor : baseColor;
             }
         }
     }
