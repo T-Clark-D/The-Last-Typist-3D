@@ -87,7 +87,7 @@ public class PlayerControllerNetwork : MonoBehaviour
         AnimateWalking(input);
         //face correct direction
         if(input.magnitude!=0)
-        gameObject.transform.forward = input;
+        gameObject.transform.forward = -input;
         Vector3 direction = input.normalized;
         Vector3 velocity = direction * m_speed;
         m_RB.MovePosition(transform.position + velocity * Time.deltaTime);
@@ -137,7 +137,7 @@ public class PlayerControllerNetwork : MonoBehaviour
                 var targetScript = target.GetComponent<Targetable>();
                 if (targetScript.targetWord == m_writtenText.text)
                 {
-                    Debug.Log(targetScript.targetWord);
+                    //Debug.Log(targetScript.targetWord);
                     GameHandler.currentEnemyNum--;
                     targetedInstances.Remove(target);
                     ((Enemies)targetScript).Death();
@@ -173,7 +173,7 @@ public class PlayerControllerNetwork : MonoBehaviour
                 var targetScript = target.GetComponent<Targetable>();
                 if (targetScript.targetWord == m_writtenText.text)
                 {
-                    Debug.Log(targetScript.targetWord);
+                    //Debug.Log(targetScript.targetWord);
                     GameHandler.currentEnemyNum--;
                     targetedInstances.Remove(target);
                     ((Enemies)targetScript).GrindUp();
