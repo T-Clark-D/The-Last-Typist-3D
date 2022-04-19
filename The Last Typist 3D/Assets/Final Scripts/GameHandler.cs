@@ -12,7 +12,7 @@ public class GameHandler : MonoBehaviour
     public static int totalEnemyNum;
     public static int currentEnemyNum;
     private float timer = 0;
-    private float waitTime = 2f;
+    private float waitTime = 5f;
     public GameObject basicZombie;
     public WordVomit WV;
     // The CameraSwitcher script is attacked to the stateDrivenCamera gameobject
