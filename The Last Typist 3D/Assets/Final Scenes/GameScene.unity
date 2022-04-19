@@ -452,6 +452,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1041423072
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1041423073}
+  m_Layer: 0
+  m_Name: NoZombieTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1041423073
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1041423072}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1896502561}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1146000202
 GameObject:
   m_ObjectHideFlags: 0
@@ -615,8 +645,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376751957}
-  m_LocalRotation: {x: 0.16470902, y: 0.45566666, z: -0.08621556, w: 0.87052035}
-  m_LocalPosition: {x: 41.44681, y: 3.144013, z: 46.155083}
+  m_LocalRotation: {x: 0.164709, y: 0.45566666, z: -0.08621555, w: 0.8705204}
+  m_LocalPosition: {x: 41.446815, y: 3.1440127, z: 46.15509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1888472847}
@@ -636,6 +666,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1896502556}
+  noZombieTarget: {fileID: 1041423072}
   pc: {fileID: 1896502557}
   npcList: []
   cam: {fileID: 1376751958}
@@ -840,8 +871,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874179710}
-  m_LocalRotation: {x: 0.16470902, y: 0.45566666, z: -0.08621556, w: 0.87052035}
-  m_LocalPosition: {x: 41.44681, y: 3.144013, z: 46.155083}
+  m_LocalRotation: {x: 0.164709, y: 0.45566666, z: -0.08621555, w: 0.8705204}
+  m_LocalPosition: {x: 41.446815, y: 3.1440127, z: 46.15509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1111,6 +1142,7 @@ Transform:
   m_Children:
   - {fileID: 724747729}
   - {fileID: 312817404}
+  - {fileID: 1041423073}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3035,6 +3067,8 @@ MonoBehaviour:
   enemyText: {fileID: 7515156604802756964}
   basicZombie: {fileID: 5428909830439850385, guid: 26d95a5bd503ec24daf66aff53aaac1d, type: 3}
   WV: {fileID: 0}
+  stateDrivenCamera: {fileID: 1012017627}
+  CS: {fileID: 0}
   resourceGatheringModeInitialised: 0
 --- !u!224 &7515156604928409015
 RectTransform:

@@ -15,6 +15,9 @@ public class GameHandler : MonoBehaviour
     private float waitTime = 2f;
     public GameObject basicZombie;
     public WordVomit WV;
+    // The CameraSwitcher script is attacked to the stateDrivenCamera gameobject
+    public GameObject stateDrivenCamera;
+    public CameraSwitcher CS;
     private int spawnedEnemies;
 
     public static bool waveMode;
@@ -23,6 +26,11 @@ public class GameHandler : MonoBehaviour
     public bool resourceGatheringModeInitialised;
 
     public static string selectedObject = "FleshBags";
+
+    private void Awake()
+    {
+        CS = stateDrivenCamera.GetComponent<CameraSwitcher>();
+    }
 
     void Start()
     {
@@ -75,6 +83,7 @@ public class GameHandler : MonoBehaviour
             //instantiates the words over courses to start gathering
             if (!resourceGatheringModeInitialised)
             {
+                CS.SwitchState();
                 var corpses = GameObject.FindGameObjectsWithTag("corpse");
                 foreach (GameObject corpse in corpses)
                 {
@@ -103,10 +112,10 @@ public class GameHandler : MonoBehaviour
             timer += Time.deltaTime;
             if (timer > waitTime)
             {
-
                 timer = 0;
                 buildMode = false;
                 waveMode = true;
+                CS.SwitchState();
                 RestartWave();
             }
 
