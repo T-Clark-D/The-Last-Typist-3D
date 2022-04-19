@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
 
-public class PlayerControllerNetwork : MonoBehaviour
+public class PlayerControllerNetworkOld : MonoBehaviour
 {
     public float m_speed;
 

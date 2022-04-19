@@ -51,7 +51,7 @@ public class CameraTargeter : MonoBehaviour
 
     private void SetCameraTarget()
     {
-        if (pc.targetedInstances != null || pc.targetedInstances.Count > 0)
+        if (npcList != null || npcList.Count > 0)
         {
             cam.LookAt = npcList[0].transform;
         }
