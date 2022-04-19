@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NPC
   - corpse
+  - vcam1
   layers:
   - Default
   - TransparentFX
