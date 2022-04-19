@@ -110,9 +110,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c65839edbfc0d748ab5853083bb89b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  baseColor: {fileID: 2100000, guid: f5391348118cc2b42848d2fae9836d53, type: 2}
+  baseColor: {fileID: 2100000, guid: c3bd321c3163598449535e0a8d4a4930, type: 2}
   offsetColor: {fileID: 2100000, guid: 1cc555599f42c6e4ba88ec814f9d094e, type: 2}
   hoverColor: {fileID: 2100000, guid: c890852ccd74bc54ca4cbc1b516ff038, type: 2}
+  fleshBagPrefab: {fileID: 5767043553441204044, guid: 12bc02552deee7c4597b8f119f3b1812, type: 3}
+  spikesPrefab: {fileID: 3315294040646930048, guid: 69cd58f76779811458c01d38fbaaf38c, type: 3}
 --- !u!208 &6483532022599171643
 NavMeshObstacle:
   m_ObjectHideFlags: 0
