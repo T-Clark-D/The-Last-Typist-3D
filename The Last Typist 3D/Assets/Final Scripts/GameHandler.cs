@@ -18,8 +18,8 @@ public class GameHandler : MonoBehaviour
     // The CameraSwitcher script is attacked to the stateDrivenCamera gameobject
     public GameObject stateDrivenCamera;
     public CameraSwitcher CS;
-    private int spawnedEnemies;
-
+    public static int spawnedEnemies;
+    public SpawnHandler SH;
     public static bool waveMode;
     public static bool resourceGatheringMode;
     public static bool buildMode;
@@ -30,6 +30,7 @@ public class GameHandler : MonoBehaviour
     private void Awake()
     {
         CS = stateDrivenCamera.GetComponent<CameraSwitcher>();
+        SH = GetComponent<SpawnHandler>();
     }
 
     void Start()
@@ -40,7 +41,7 @@ public class GameHandler : MonoBehaviour
         waveMode = true;
         resourceGatheringModeInitialised = false;
         waveNum = 1;
-        totalEnemyNum = 1; //Random.Range((waveNum * 10) / 2, waveNum * 10);
+        totalEnemyNum = Random.Range((waveNum * 10) / 2, waveNum * 10);
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
@@ -61,6 +62,7 @@ public class GameHandler : MonoBehaviour
                     {
                         //Instantiate(basicZombie, new Vector3(4, 0, 0), Quaternion.identity);
                         //spawnedEnemies++;
+                        SH.SpawnZombie("Basic");
                     }
                     timer = 0;
                 }
