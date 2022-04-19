@@ -9,8 +9,8 @@ public class GameHandler : MonoBehaviour
     [SerializeField] Text waveText;
     [SerializeField] Text enemyText;
     public static int waveNum;
-    public static int totalEnemyNum;
-    public static int currentEnemyNum;
+    public static int totalEnemyNum = 0;
+    public static int currentEnemyNum = 0;
     private float timer = 0;
     private float waitTime = 5f;
     public GameObject basicZombie;
