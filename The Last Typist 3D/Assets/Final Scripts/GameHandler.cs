@@ -16,7 +16,7 @@ public class GameHandler : MonoBehaviour
     public GameObject basicZombie;
     public WordVomit WV;
     private int spawnedEnemies;
-    
+
     public static bool waveMode;
     public static bool resourceGatheringMode;
     public static bool buildMode;
@@ -32,7 +32,7 @@ public class GameHandler : MonoBehaviour
         waveMode = true;
         resourceGatheringModeInitialised = false;
         waveNum = 1;
-        totalEnemyNum = 2;
+        totalEnemyNum = 1; //Random.Range((waveNum * 10) / 2, waveNum * 10);
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
@@ -48,24 +48,22 @@ public class GameHandler : MonoBehaviour
                 timer += Time.deltaTime;
                 if (timer > waitTime)
                 {
-
-                    Debug.Log("2sec interval");
+                    //Debug.Log("2sec interval");
                     if (spawnedEnemies < totalEnemyNum)
                     {
-                        Instantiate(basicZombie, new Vector3(4, 0, 0), Quaternion.identity);
-                        spawnedEnemies++;
+                        //Instantiate(basicZombie, new Vector3(4, 0, 0), Quaternion.identity);
+                        //spawnedEnemies++;
                     }
                     timer = 0;
                 }
-
-                //InstantiateZombie(Vector3 pos)
             }
+
             if (currentEnemyNum == 0)
             {
                 Debug.Log("Wave complete");
                 waveMode = false;
                 resourceGatheringMode = true;
-                
+
             }
             enemyText.text = "Enemies Left: " + currentEnemyNum;
         }
@@ -84,22 +82,40 @@ public class GameHandler : MonoBehaviour
                     corpse.GetComponent<Enemies>().InitializeTextBoxWithLength(5);
                 }
                 resourceGatheringModeInitialised = true;
-                
+
             }
-           
+
             //if build mode button is pressed switch to build mode
+            if (GameObject.FindGameObjectsWithTag("corpse").Length == 0)
+            {
+                buildMode = true;
+                resourceGatheringMode = false;
+                timer = 0; // for testing
+                Debug.Log("BUILD MODE ENTERED");
+            }
+
+
         }
-
-
 
         if (buildMode)
         {
+            //test purposes
+            timer += Time.deltaTime;
+            if (timer > waitTime)
+            {
+
+                timer = 0;
+                buildMode = false;
+                waveMode = true;
+                RestartWave();
+            }
 
         }
     }
 
     void RestartWave()
     {
+        Debug.Log("NEW WAVE");
         resourceGatheringModeInitialised = false;
         waveNum++;
         spawnedEnemies = 0;
@@ -107,6 +123,7 @@ public class GameHandler : MonoBehaviour
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
+        
     }
 
 }
