@@ -9,6 +9,7 @@ public class NavMeshAgentAI : MonoBehaviour
     public GameObject meatGrinder;
     public float remainingDistance;
     private BasicZombie BZ;
+    private Bombie B;
 
     private NavMeshAgent agent;
 
@@ -17,7 +18,8 @@ public class NavMeshAgentAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
-        BZ = GetComponent<BasicZombie>();
+        //BZ = GetComponent<BasicZombie>();
+        //B = GetComponent<Bombie>();
     }
 
     // Update is called once per frame

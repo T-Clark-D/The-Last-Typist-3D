@@ -60,7 +60,7 @@ public class GameHandler : MonoBehaviour
                     //Debug.Log("2sec interval");
                     if (spawnedEnemies < totalEnemyNum)
                     {
-                        int chosenZombie = 1; //Random.Range(0, 2);
+                        int chosenZombie = Random.Range(0, 2);
                         //Instantiate(basicZombie, new Vector3(4, 0, 0), Quaternion.identity);
                         //spawnedEnemies++;
                         SH.SpawnZombie(chosenZombie);
@@ -102,7 +102,6 @@ public class GameHandler : MonoBehaviour
             {
                 buildMode = true;
                 resourceGatheringMode = false;
-                timer = 0; // for testing
                 Debug.Log("BUILD MODE ENTERED");
             }
         }
@@ -111,7 +110,6 @@ public class GameHandler : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
-
                 buildMode = false;
                 waveMode = true;
                 CS.SwitchState();

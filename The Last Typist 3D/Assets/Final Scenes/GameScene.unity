@@ -1012,8 +1012,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376751957}
-  m_LocalRotation: {x: 0.16470893, y: 0.45566663, z: -0.0862155, w: 0.8705204}
-  m_LocalPosition: {x: 41.44681, y: 3.1440115, z: 46.155087}
+  m_LocalRotation: {x: 0.16470894, y: 0.4556666, z: -0.0862155, w: 0.8705205}
+  m_LocalPosition: {x: 41.44681, y: 3.1440117, z: 46.155087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1888472847}
@@ -1238,8 +1238,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874179710}
-  m_LocalRotation: {x: 0.16470893, y: 0.45566663, z: -0.0862155, w: 0.8705204}
-  m_LocalPosition: {x: 41.44681, y: 3.1440115, z: 46.155087}
+  m_LocalRotation: {x: 0.16470894, y: 0.4556666, z: -0.0862155, w: 0.8705205}
+  m_LocalPosition: {x: 41.44681, y: 3.1440117, z: 46.155087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2228,7 +2228,7 @@ GameObject:
   - component: {fileID: 7515156604928409011}
   - component: {fileID: 7515156604928409021}
   m_Layer: 5
-  m_Name: GameUI
+  m_Name: GameHandler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2247,5 +2247,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicZombie: {fileID: 3782612581305979753, guid: 8dccfcf6f2153af4f8ada9b551f684b2, type: 3}
-  bomberZombie: {fileID: 3782612581305979753, guid: 8dccfcf6f2153af4f8ada9b551f684b2, type: 3}
+  bomberZombie: {fileID: 3714347041696587478, guid: 2983850beb885e84fb4d3f6243621724, type: 3}
   spawnPointList: []
