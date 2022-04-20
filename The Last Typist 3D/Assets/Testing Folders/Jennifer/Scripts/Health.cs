@@ -1,0 +1,50 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class Health : MonoBehaviour
+{
+    public int health;
+    public int numOfHearts;
+
+    public Image[] hearts;
+    public Sprite fullHeart;
+    public Sprite emptyHeart;
+
+    void Update()
+    {
+        // Make sure player doesn't have more health than the number of heart containers
+        if(health > numOfHearts)
+        {
+            health = numOfHearts;
+        }
+        for(int i = 0; i < hearts.Length; i++)
+        {
+            if (i < health)
+            {
+                hearts[i].sprite = fullHeart;
+            }
+            else
+            {
+                hearts[i].sprite = emptyHeart;
+            }
+
+            // Show numOfHearts defined 
+            if (i < numOfHearts)
+            {
+                hearts[i].enabled = true;
+            }
+            else
+                hearts[i].enabled = false;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "NPC")
+        {
+            health -= 1;
+        }
+    }
+}
