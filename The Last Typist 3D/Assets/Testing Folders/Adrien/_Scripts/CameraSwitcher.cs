@@ -21,7 +21,7 @@ public class CameraSwitcher : MonoBehaviour
         }
     }
 
-    private void SwitchState()
+    public void SwitchState()
     {
         if (thirdPerson)
         {

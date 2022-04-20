@@ -7,6 +7,7 @@ using System.Linq;
 public class CameraTargeter : MonoBehaviour
 {
     public GameObject player;
+    public GameObject noZombieTarget;
     public PlayerControllerNetwork pc;
     public List<GameObject> npcList;
     [SerializeField] private CinemachineVirtualCamera cam;
@@ -34,6 +35,7 @@ public class CameraTargeter : MonoBehaviour
         var a = GameObject.FindGameObjectsWithTag("NPC");
         if (a == null || a.Length == 0)
         {
+            npcList.Clear();
             return;
         }
         npcList = a.ToList();
@@ -51,7 +53,12 @@ public class CameraTargeter : MonoBehaviour
 
     private void SetCameraTarget()
     {
-        if (npcList != null || npcList.Count > 0)
+        
+        if (npcList == null || npcList.Count <= 0)
+        {
+            cam.LookAt = noZombieTarget.transform;
+        }
+        else
         {
             cam.LookAt = npcList[0].transform;
         }
