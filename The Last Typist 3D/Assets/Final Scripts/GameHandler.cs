@@ -26,9 +26,10 @@ public class GameHandler : MonoBehaviour
     public static bool buildMode;
     public bool resourceGatheringModeInitialised;
 
-    public static string selectedObject = "FleshBags";
+    public static string selectedObject = "";
 
     public static int fleshCount = 0;
+    public GameObject craftingUI;
 
     private void Awake()
     {
@@ -114,6 +115,7 @@ public class GameHandler : MonoBehaviour
 
         if (buildMode)
         {
+            craftingUI.SetActive(true);
             if (Input.GetKeyDown(KeyCode.R))
             {
                 buildMode = false;
@@ -136,6 +138,8 @@ public class GameHandler : MonoBehaviour
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
         fleshText.text = "Flesh: " + fleshCount;
+        craftingUI.SetActive(false);
+        selectedObject = "";
     }
 
 }

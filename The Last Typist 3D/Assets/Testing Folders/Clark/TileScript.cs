@@ -45,10 +45,23 @@ public class TileScript : MonoBehaviour
     {
         if (GameHandler.buildMode)
         {
+            if (GameHandler.selectedObject == "")
+            {
+
+            }
 
             if (GameHandler.selectedObject == "FleshBags")
             {
-                instantiatedObject = Instantiate(fleshBagPrefab, gameObject.transform.position, new Quaternion(-0.50000006f, -0.49999994f, -0.49999997f, 0.50000006f));
+                if (GameHandler.fleshCount >= 1)
+                {
+                    instantiatedObject = Instantiate(fleshBagPrefab, gameObject.transform.position, new Quaternion(-0.50000006f, -0.49999994f, -0.49999997f, 0.50000006f));
+                    GameHandler.fleshCount -= 1;
+                }
+                else
+                {
+                    Debug.Log("Not enough Flesh");
+                }
+
                 //carve a whole in the nav mesh
                 if (!nmo.isActiveAndEnabled)
                 {
@@ -63,8 +76,15 @@ public class TileScript : MonoBehaviour
             }
             if (GameHandler.selectedObject == "SpikeTraps")
             {
-                instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, Quaternion.identity);
-
+                if (GameHandler.fleshCount >= 2)
+                {
+                    instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, Quaternion.identity);
+                    GameHandler.fleshCount -= 2;
+                }
+                else
+                {
+                    Debug.Log("Not enough Flesh");
+                }
             }
         }
     }

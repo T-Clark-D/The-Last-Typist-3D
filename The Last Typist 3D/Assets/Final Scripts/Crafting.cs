@@ -5,6 +5,11 @@ using UnityEngine;
 public class Crafting : MonoBehaviour
 {
 
+    void Start()
+    {
+        gameObject.SetActive(false);
+    }
+
     public void FleshBagSelect()
     {
         Debug.Log("Fleshbag Selected");
