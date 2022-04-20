@@ -76,6 +76,15 @@ public class PlayerControllerNetwork : MonoBehaviour
             }
         }
 
+        if (GameHandler.buildMode)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                m_isCombatMode = false;
+                MCC.SwitchMode();
+            }
+        }
+
     }
 
     private void Movement()
