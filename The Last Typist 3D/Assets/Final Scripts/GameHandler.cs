@@ -41,7 +41,7 @@ public class GameHandler : MonoBehaviour
         waveMode = true;
         resourceGatheringModeInitialised = false;
         waveNum = 1;
-        totalEnemyNum = Random.Range((waveNum * 10) / 2, waveNum * 10);
+        totalEnemyNum = 1; //Random.Range((waveNum * 10) / 2, waveNum * 10);
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
@@ -62,7 +62,7 @@ public class GameHandler : MonoBehaviour
                     {
                         //Instantiate(basicZombie, new Vector3(4, 0, 0), Quaternion.identity);
                         //spawnedEnemies++;
-                        SH.SpawnZombie("Basic");
+                        //SH.SpawnZombie("Basic");
                     }
                     timer = 0;
                 }
@@ -104,17 +104,13 @@ public class GameHandler : MonoBehaviour
                 timer = 0; // for testing
                 Debug.Log("BUILD MODE ENTERED");
             }
-
-
         }
 
         if (buildMode)
         {
-            //test purposes
-            timer += Time.deltaTime;
-            if (timer > waitTime)
+            if (Input.GetKeyDown(KeyCode.R))
             {
-                timer = 0;
+
                 buildMode = false;
                 waveMode = true;
                 CS.SwitchState();

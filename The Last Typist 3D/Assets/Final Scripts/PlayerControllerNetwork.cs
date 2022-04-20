@@ -29,8 +29,6 @@ public class PlayerControllerNetwork : MonoBehaviour
     private bool isWalking = false;
    
 
-    
-
     // Start is called before the first frame update
     void Start()
     {
