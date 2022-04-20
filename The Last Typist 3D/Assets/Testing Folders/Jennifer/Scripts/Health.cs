@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    public int health;
+    public int health; 
     public int numOfHearts;
 
     public Image[] hearts;
@@ -51,7 +51,7 @@ public class Health : MonoBehaviour
     {
         if(collision.gameObject.tag == "NPC")
         {
-            health -= 1;
+            health -= 1; // dmg
         }
     }
 }

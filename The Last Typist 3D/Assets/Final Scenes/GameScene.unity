@@ -2914,8 +2914,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376751957}
-  m_LocalRotation: {x: 0.16470885, y: 0.45566666, z: -0.08621548, w: 0.8705205}
-  m_LocalPosition: {x: 41.44681, y: 3.1440105, z: 46.155083}
+  m_LocalRotation: {x: 0.1647089, y: 0.4556666, z: -0.08621548, w: 0.8705205}
+  m_LocalPosition: {x: 41.446815, y: 3.1440122, z: 46.155087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1888472847}
@@ -4085,8 +4085,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874179710}
-  m_LocalRotation: {x: 0.16470885, y: 0.45566666, z: -0.08621548, w: 0.8705205}
-  m_LocalPosition: {x: 41.44681, y: 3.1440105, z: 46.155083}
+  m_LocalRotation: {x: 0.1647089, y: 0.4556666, z: -0.08621548, w: 0.8705205}
+  m_LocalPosition: {x: 41.446815, y: 3.1440122, z: 46.155087}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4471,11 +4471,11 @@ MonoBehaviour:
   health: 5
   numOfHearts: 5
   hearts:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1176434446}
+  - {fileID: 1907186227}
+  - {fileID: 1923406642}
+  - {fileID: 46665015}
+  - {fileID: 741081581}
   fullHeart: {fileID: 3152131760966609973, guid: 60862b40abff2694d87efb5062106fa7, type: 3}
   emptyHeart: {fileID: 5906594685684532760, guid: 60862b40abff2694d87efb5062106fa7, type: 3}
 --- !u!1 &1907186225
