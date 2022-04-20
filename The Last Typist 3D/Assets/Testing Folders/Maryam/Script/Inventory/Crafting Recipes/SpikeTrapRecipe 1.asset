@@ -19,3 +19,4 @@ MonoBehaviour:
   - itemName: SpikeTrap
     Amount: 1
   ResourceManager: {fileID: 0}
+  Item: {fileID: 2700482122887726186, guid: e6644628ccb214b4bbb27cdec084c127, type: 3}

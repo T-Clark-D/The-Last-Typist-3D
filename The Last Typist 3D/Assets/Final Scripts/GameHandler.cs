@@ -25,6 +25,7 @@ public class GameHandler : MonoBehaviour
     public static bool buildMode;
     public bool resourceGatheringModeInitialised;
     public Canvas HUD;
+    public static Inventory inventory;
 
     public static string selectedObject = "FleshBags";
 

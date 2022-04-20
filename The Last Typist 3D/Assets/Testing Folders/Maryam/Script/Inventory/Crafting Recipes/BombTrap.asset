@@ -20,5 +20,5 @@ MonoBehaviour:
   Results:
   - itemName: BombTrap
     Amount: 1
-  Inventory: {fileID: 0}
   ResourceManager: {fileID: 0}
+  Item: {fileID: 6983892403279103628, guid: 7d49872fff158e44ebe1a605eb8b1c4e, type: 3}

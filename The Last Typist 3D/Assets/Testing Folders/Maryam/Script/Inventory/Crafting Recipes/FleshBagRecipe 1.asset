@@ -14,12 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Materials:
   - itemName: cloth
-    item: {fileID: 0}
     Amount: 1
   - itemName: flesh
-    item: {fileID: 0}
     Amount: 1
   Results:
   - itemName: FleshBag
-    item: {fileID: 0}
     Amount: 1
+  ResourceManager: {fileID: 0}
+  Item: {fileID: 8267930119110139996, guid: d24f488dd4ad757488067dace22a8f0c, type: 3}
