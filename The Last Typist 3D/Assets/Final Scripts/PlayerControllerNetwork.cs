@@ -27,7 +27,7 @@ public class PlayerControllerNetwork : MonoBehaviour
 
     public MainCharacter_Controller MCC;
     private bool isWalking = false;
-   
+
 
     // Start is called before the first frame update
     void Start()
@@ -61,7 +61,7 @@ public class PlayerControllerNetwork : MonoBehaviour
             {
                 m_isCombatMode = !m_isCombatMode;
                 MCC.SwitchMode();
-                
+
                 m_writtenText.text = "";
             }
         }
@@ -93,8 +93,8 @@ public class PlayerControllerNetwork : MonoBehaviour
         //animations
         AnimateWalking(input);
         //face correct direction
-        if(input.magnitude!=0)
-        gameObject.transform.forward = -input;
+        if (input.magnitude != 0)
+            gameObject.transform.forward = -input;
         Vector3 direction = input.normalized;
         Vector3 velocity = direction * m_speed;
         m_RB.MovePosition(transform.position + velocity * Time.deltaTime);
@@ -117,7 +117,7 @@ public class PlayerControllerNetwork : MonoBehaviour
     private void GetTextInput()
     {
         m_writtenText.text += Input.inputString;
-       
+
         if (Input.GetKeyDown(KeyCode.Backspace) && m_writtenText.text.Length > 1)
         {
             string backSpacedText = m_writtenText.text.Substring(0, m_writtenText.text.Length - 2);

@@ -53,6 +53,7 @@ public class Enemies : Targetable
     {
         //add appropriate resources
         Debug.Log("Adding reources");
+        GameHandler.fleshCount++;
         Destroy(anchoredText);
         Destroy(gameObject);
     }

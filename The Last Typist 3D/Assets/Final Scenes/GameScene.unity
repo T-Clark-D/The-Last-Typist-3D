@@ -1227,13 +1227,14 @@ GameObject:
   - component: {fileID: 613510299}
   - component: {fileID: 613510298}
   - component: {fileID: 613510297}
+  - component: {fileID: 613510301}
   m_Layer: 5
   m_Name: CraftingUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &613510297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,6 +1317,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &613510301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613510296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ac596464d83afe419cc5367e656e580, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &617114716
 GameObject:
   m_ObjectHideFlags: 0
@@ -3267,7 +3280,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1374544539}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 613510301}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: SpikeTrapSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1374544539
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3366,8 +3391,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376751957}
-  m_LocalRotation: {x: 0.16470885, y: 0.45566666, z: -0.08621548, w: 0.8705205}
-  m_LocalPosition: {x: 41.44681, y: 3.1440105, z: 46.155083}
+  m_LocalRotation: {x: 0.164709, y: 0.45566666, z: -0.08621555, w: 0.8705204}
+  m_LocalPosition: {x: 41.446815, y: 3.1440127, z: 46.15509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1888472847}
@@ -4537,8 +4562,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874179710}
-  m_LocalRotation: {x: 0.16470885, y: 0.45566666, z: -0.08621548, w: 0.8705205}
-  m_LocalPosition: {x: 41.44681, y: 3.1440105, z: 46.155083}
+  m_LocalRotation: {x: 0.164709, y: 0.45566666, z: -0.08621555, w: 0.8705204}
+  m_LocalPosition: {x: 41.446815, y: 3.1440127, z: 46.15509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5352,7 +5377,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1950555590}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 613510301}
+        m_TargetAssemblyTypeName: Crafting, Assembly-CSharp
+        m_MethodName: FleshBagSelect
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1950555590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6211,6 +6248,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveText: {fileID: 7515156604449988022}
   enemyText: {fileID: 7515156604802756964}
+  fleshText: {fileID: 1022079468}
   basicZombie: {fileID: 5428909830439850385, guid: 26d95a5bd503ec24daf66aff53aaac1d, type: 3}
   WV: {fileID: 0}
   stateDrivenCamera: {fileID: 1012017627}

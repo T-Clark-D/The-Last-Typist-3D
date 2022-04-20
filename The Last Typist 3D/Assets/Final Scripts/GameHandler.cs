@@ -8,6 +8,7 @@ public class GameHandler : MonoBehaviour
 {
     [SerializeField] Text waveText;
     [SerializeField] Text enemyText;
+    [SerializeField] Text fleshText;
     public static int waveNum;
     public static int totalEnemyNum = 0;
     public static int currentEnemyNum = 0;
@@ -27,6 +28,8 @@ public class GameHandler : MonoBehaviour
 
     public static string selectedObject = "FleshBags";
 
+    public static int fleshCount = 0;
+
     private void Awake()
     {
         CS = stateDrivenCamera.GetComponent<CameraSwitcher>();
@@ -45,7 +48,9 @@ public class GameHandler : MonoBehaviour
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
+        fleshText.text = "Flesh: 0"; 
         spawnedEnemies = 0;
+        fleshCount = 0;
     }
 
     void Update()
@@ -104,6 +109,7 @@ public class GameHandler : MonoBehaviour
                 resourceGatheringMode = false;
                 Debug.Log("BUILD MODE ENTERED");
             }
+            fleshText.text = "Flesh: " + fleshCount;
         }
 
         if (buildMode)
@@ -115,7 +121,7 @@ public class GameHandler : MonoBehaviour
                 CS.SwitchState();
                 RestartWave();
             }
-
+            fleshText.text = "Flesh: " + fleshCount;
         }
     }
 
@@ -129,7 +135,7 @@ public class GameHandler : MonoBehaviour
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
-        
+        fleshText.text = "Flesh: " + fleshCount;
     }
 
 }
