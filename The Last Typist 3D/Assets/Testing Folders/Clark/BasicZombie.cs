@@ -25,13 +25,13 @@ public class BasicZombie : Enemies
     void Update()
     {
         //otherwise its corpse that doesnt move
-        if (gameObject.tag == "NPC")
-        {
-            Vector3 direction = (m_player.transform.position - transform.position).normalized;
-            Vector3 velocity = direction * m_speed;
-            transform.LookAt(m_player.transform.position);
-            transform.position = (transform.position + velocity * Time.deltaTime);
-        }
+        //if (gameObject.tag == "NPC")
+        //{
+        //    Vector3 direction = (m_player.transform.position - transform.position).normalized;
+        //    Vector3 velocity = direction * m_speed;
+        //    transform.LookAt(m_player.transform.position);
+        //    transform.position = (transform.position + velocity * Time.deltaTime);
+        //}
         if (killed)
         {
             zombieController.StartOrStopWalkAnimation1();
@@ -39,5 +39,10 @@ public class BasicZombie : Enemies
             gameObject.GetComponent<Enemies>().enabled = false;
 
         }
+    }
+
+    public bool getKilled()
+    {
+        return killed;
     }
 }

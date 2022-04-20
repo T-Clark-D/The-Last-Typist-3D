@@ -8,6 +8,7 @@ public class NavMeshAgentAI : MonoBehaviour
     public Transform target;
     public GameObject meatGrinder;
     public float remainingDistance;
+    private BasicZombie BZ;
 
     private NavMeshAgent agent;
 
@@ -16,20 +17,29 @@ public class NavMeshAgentAI : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        BZ = GetComponent<BasicZombie>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        agent.destination = target.position;
-        if (agent.pathPending)
+        if (gameObject.tag == "NPC")
         {
-            remainingDistance = -1;
+            // Movement, zombie is alive
+            agent.destination = target.position;
+            if (agent.pathPending)
+            {
+                remainingDistance = -1;
+            }
+            else
+            {
+                //remainingDistance = agent.remainingDistance;
+                remainingDistance = getPathDistanceWithCorners(agent.path);
+            }
         }
         else
         {
-            //remainingDistance = agent.remainingDistance;
-            remainingDistance = getPathDistanceWithCorners(agent.path);
+            agent.destination = transform.position;
         }
     }
 
