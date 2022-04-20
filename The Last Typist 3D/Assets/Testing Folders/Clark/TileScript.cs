@@ -16,7 +16,6 @@ public class TileScript : MonoBehaviour
     private NavMeshObstacle nmo;
 
     public HUD hud;
-    public CraftingSlotManager craftingSlotManager;
 
     public void Init(bool isOffSet)
     {
