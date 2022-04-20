@@ -62,7 +62,7 @@ public class GameHandler : MonoBehaviour
                     {
                         //Instantiate(basicZombie, new Vector3(4, 0, 0), Quaternion.identity);
                         //spawnedEnemies++;
-                        //SH.SpawnZombie("Basic");
+                        SH.SpawnZombie("Basic");
                     }
                     timer = 0;
                 }
