@@ -115,6 +115,8 @@ MonoBehaviour:
   hoverColor: {fileID: 2100000, guid: c890852ccd74bc54ca4cbc1b516ff038, type: 2}
   fleshBagPrefab: {fileID: 5767043553441204044, guid: 12bc02552deee7c4597b8f119f3b1812, type: 3}
   spikesPrefab: {fileID: 3315294040646930048, guid: 69cd58f76779811458c01d38fbaaf38c, type: 3}
+  hud: {fileID: 2995602464780582296, guid: 1a1492afafe1cf949bf482650a47b65b, type: 3}
+  craftingSlotManager: {fileID: 0}
 --- !u!208 &6483532022599171643
 NavMeshObstacle:
   m_ObjectHideFlags: 0
