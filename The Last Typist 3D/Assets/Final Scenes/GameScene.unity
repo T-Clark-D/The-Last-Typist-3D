@@ -269,7 +269,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 425189850}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1012,8 +1012,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376751957}
-  m_LocalRotation: {x: 0.16470881, y: 0.45566645, z: -0.08621541, w: 0.87052053}
-  m_LocalPosition: {x: 41.44681, y: 3.1440108, z: 46.155083}
+  m_LocalRotation: {x: 0.16470902, y: 0.45566666, z: -0.08621556, w: 0.87052035}
+  m_LocalPosition: {x: 41.44681, y: 3.144013, z: 46.155083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1888472847}
@@ -1238,8 +1238,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874179710}
-  m_LocalRotation: {x: 0.16470881, y: 0.45566645, z: -0.08621541, w: 0.87052053}
-  m_LocalPosition: {x: 41.44681, y: 3.1440108, z: 46.155083}
+  m_LocalRotation: {x: 0.16470902, y: 0.45566666, z: -0.08621556, w: 0.87052035}
+  m_LocalPosition: {x: 41.44681, y: 3.144013, z: 46.155083}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1833,6 +1833,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bombie
       objectReference: {fileID: 0}
+    - target: {fileID: 3714347041696587478, guid: 2983850beb885e84fb4d3f6243621724, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3714347041696587479, guid: 2983850beb885e84fb4d3f6243621724, type: 3}
       propertyPath: m_player
       value: 
@@ -2243,4 +2247,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   basicZombie: {fileID: 3782612581305979753, guid: 8dccfcf6f2153af4f8ada9b551f684b2, type: 3}
+  bomberZombie: {fileID: 3714347041696587478, guid: 2983850beb885e84fb4d3f6243621724, type: 3}
   spawnPointList: []

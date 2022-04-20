@@ -8,6 +8,7 @@ public class SpawnHandler : MonoBehaviour
     #region Variables and Prefabs
     // Prefabs for zombies
     public GameObject basicZombie;
+    public GameObject bomberZombie;
     // List of spawn points for zombies
     public List<GameObject> spawnPointList;
     #endregion
@@ -25,12 +26,20 @@ public class SpawnHandler : MonoBehaviour
 
     }
 
-    public void SpawnZombie(string type)
+    public void SpawnZombie(int type)
     {
-        if (type.Equals("Basic"))
+        if (type == 0) // Basic Zombie
         {
+            Debug.Log("Basic zombie spawned!");
             int chosenSpawn = Random.Range(0, spawnPointList.Count);
             Instantiate(basicZombie, spawnPointList[chosenSpawn].transform.position, Quaternion.identity);
+            GameHandler.spawnedEnemies++;
+        }
+        if (type == 1) // Bomber Zombie
+        {
+            Debug.Log("Bomber zombie spawned!");
+            int chosenSpawn = Random.Range(0, spawnPointList.Count);
+            Instantiate(bomberZombie, spawnPointList[chosenSpawn].transform.position, Quaternion.identity);
             GameHandler.spawnedEnemies++;
         }
     }
