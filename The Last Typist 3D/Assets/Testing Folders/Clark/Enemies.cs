@@ -13,12 +13,16 @@ public class Enemies : Targetable
 
     public GameObject anchoredText;
 
+    public bool killed;
+
+
     public void Initialize()
     {
         anchor = transform.GetChild(0);
         m_RB = GetComponent<Rigidbody>();
         WV = GameObject.Find("WordVomit").GetComponent<WordVomit>();
         m_player = GameObject.Find("SpherePlayer");
+        killed = false;
     }
 
     public void InitializeTextBoxWithLength(int length)
@@ -39,7 +43,8 @@ public class Enemies : Targetable
     {
         gameObject.tag = "corpse";
         Destroy(anchoredText);
-        gameObject.GetComponent<Enemies>().enabled = false;
+        //gameObject.GetComponent<Enemies>().enabled = false;
+        killed = true;
         //this will need to be changed to going limp so that the dead targets can be targetted in resource collection mode
         //Destroy(gameObject);
     }
@@ -54,7 +59,7 @@ public class Enemies : Targetable
 
     public void TargetedText(int textLength)
     {
-        Debug.Log("we in targetd text");
+        //Debug.Log("we in targetd text");
         if(textLength == 0)
         {
             anchoredText.GetComponent<Text>().text = "<color=white>" + targetWord + "</color>";

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7691685936086368550}
   - component: {fileID: 7691685936086368545}
   - component: {fileID: 4864050798546973852}
+  - component: {fileID: 6483532022599171643}
   m_Layer: 0
   m_Name: Tile
   m_TagString: Untagged
@@ -114,3 +115,19 @@ MonoBehaviour:
   hoverColor: {fileID: 2100000, guid: c890852ccd74bc54ca4cbc1b516ff038, type: 2}
   fleshBagPrefab: {fileID: 5767043553441204044, guid: 12bc02552deee7c4597b8f119f3b1812, type: 3}
   spikesPrefab: {fileID: 3315294040646930048, guid: 69cd58f76779811458c01d38fbaaf38c, type: 3}
+--- !u!208 &6483532022599171643
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7691685936086368544}
+  m_Enabled: 0
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 5, y: 50, z: 5}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
