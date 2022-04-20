@@ -24,6 +24,7 @@ public class GameHandler : MonoBehaviour
     public static bool resourceGatheringMode;
     public static bool buildMode;
     public bool resourceGatheringModeInitialised;
+    public Canvas HUD;
 
     public static string selectedObject = "FleshBags";
 
@@ -46,6 +47,8 @@ public class GameHandler : MonoBehaviour
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
         spawnedEnemies = 0;
+        HUD.gameObject.SetActive(false);
+
     }
 
     void Update()
@@ -108,6 +111,8 @@ public class GameHandler : MonoBehaviour
 
         if (buildMode)
         {
+            HUD.gameObject.SetActive(true);
+
             if (Input.GetKeyDown(KeyCode.R))
             {
 
@@ -130,7 +135,7 @@ public class GameHandler : MonoBehaviour
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
-        
+        HUD.gameObject.SetActive(false);
     }
 
 }

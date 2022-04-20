@@ -19,6 +19,10 @@ public class Inventory : MonoBehaviour,  IcraftingItem
     public event EventHandler<IInventoryEventArgs> ItemRemoved;
     public event EventHandler<IInventoryEventArgs> ItemUsed;
 
+    public InventoryItemBase fleshBagItem;
+    public InventoryItemBase spikeTrapItem;
+    public InventoryItemBase bombTrapItem;
+
 
 
     public Inventory()
@@ -39,9 +43,15 @@ public class Inventory : MonoBehaviour,  IcraftingItem
             ItemUsed(this, new IInventoryEventArgs(item));
         }
         if (isSelected)
+        {
             selectedObject_inventory = item.Name;
+            GameHandler.selectedObject = item.Name;
+        }
         else
+        {
             selectedObject_inventory = "";
+            GameHandler.selectedObject = "";
+        }
 
         item.OnUse(true);
     }

@@ -136,7 +136,14 @@ public class PlayerControllerNetwork : MonoBehaviour
                 if (targetScript.targetWord == m_writtenText.text)
                 {
                     //Debug.Log(targetScript.targetWord);
-                    GameHandler.currentEnemyNum--;
+                    if (GameHandler.resourceGatheringMode)
+                    {
+                        ResourceManager.FleshCount++;
+                    }
+                    else
+                    {
+                        GameHandler.currentEnemyNum--;
+                    }
                     targetedInstances.Remove(target);
                     ((Enemies)targetScript).Death();
                     m_writtenText.text = "";

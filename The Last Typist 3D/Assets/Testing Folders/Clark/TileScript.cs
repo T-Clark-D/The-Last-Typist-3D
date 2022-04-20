@@ -15,6 +15,9 @@ public class TileScript : MonoBehaviour
     public GameObject spikesPrefab;
     private NavMeshObstacle nmo;
 
+    public HUD hud;
+    public CraftingSlotManager craftingSlotManager;
+
     public void Init(bool isOffSet)
     {
         offsetStatus = isOffSet;
@@ -48,11 +51,13 @@ public class TileScript : MonoBehaviour
 
             if (GameHandler.selectedObject == "FleshBags")
             {
+                hud.Inventory.ConsumeItem("FleshBags", hud.Inventory.fleshBagItem);
                 instantiatedObject = Instantiate(fleshBagPrefab, gameObject.transform.position, new Quaternion(-0.50000006f, -0.49999994f, -0.49999997f, 0.50000006f));
-                //carve a whole in the nav mesh
+                //carve a whole in the nav mesh                
             }
             if (GameHandler.selectedObject == "SpikeTraps")
             {
+                hud.Inventory.ConsumeItem("FleshBags", hud.Inventory.spikeTrapItem);
                 instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, Quaternion.identity);
                 //carve a whole in the nav mesh
                 if (!nmo.isActiveAndEnabled)

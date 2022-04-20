@@ -6,18 +6,21 @@ using UnityEngine.UI;
 public class HUD : MonoBehaviour 
 {
     public Inventory Inventory;
-    
+   
+    Transform inventoryPanel;
+
     // Start is called before the first frame update
     void Start()
     {
         Debug.Log("adding item");
         Inventory.ItemAdded += InventoryScript_ItemAdded;
         Inventory.ItemRemoved += InventoryScript_ItemRemoved;
+        inventoryPanel = transform.Find("InventoryPanel");
     }
 
     private void InventoryScript_ItemAdded(object sender, IInventoryEventArgs e)
     {
-        Transform inventoryPanel = transform.Find("InventoryPanel");
+        
         int index = -1;
         foreach (Transform slot in inventoryPanel)
         {
@@ -55,7 +58,6 @@ public class HUD : MonoBehaviour
 
     private void InventoryScript_ItemRemoved(object sender, IInventoryEventArgs e)
     {
-        Transform inventoryPanel = transform.Find("InventoryPanel");
         int index = -1;
         foreach (Transform slot in inventoryPanel)
         {
@@ -93,6 +95,7 @@ public class HUD : MonoBehaviour
         }
     }
     // Update is called once per frame
+    
     void Update()
     {
         
