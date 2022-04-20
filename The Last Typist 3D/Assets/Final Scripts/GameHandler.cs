@@ -28,7 +28,7 @@ public class GameHandler : MonoBehaviour
 
     public static string selectedObject = "";
 
-    public static int fleshCount = 0;
+    public static int fleshCount;
     public GameObject craftingUI;
 
     private void Awake()
@@ -46,12 +46,14 @@ public class GameHandler : MonoBehaviour
         resourceGatheringModeInitialised = false;
         waveNum = 1;
         totalEnemyNum = 1; //Random.Range((waveNum * 10) / 2, waveNum * 10);
+        fleshCount = 2;
+        spawnedEnemies = 0;
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
-        fleshText.text = "Flesh: 0"; 
-        spawnedEnemies = 0;
-        fleshCount = 0;
+        fleshText.text = "Flesh: " + fleshCount; 
+
+
     }
 
     void Update()

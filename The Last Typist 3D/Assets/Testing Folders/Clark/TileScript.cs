@@ -78,7 +78,7 @@ public class TileScript : MonoBehaviour
             {
                 if (GameHandler.fleshCount >= 2)
                 {
-                    instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, Quaternion.identity);
+                    instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, new Quaternion(-0.50000006f, -0.49999994f, -0.49999997f, 0.50000006f));
                     GameHandler.fleshCount -= 2;
                 }
                 else
