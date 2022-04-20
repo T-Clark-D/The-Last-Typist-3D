@@ -19,6 +19,10 @@ public class Inventory : MonoBehaviour,  IcraftingItem
     public event EventHandler<IInventoryEventArgs> ItemRemoved;
     public event EventHandler<IInventoryEventArgs> ItemUsed;
 
+    public InventoryItemBase fleshBagsitem;
+    public InventoryItemBase spikeTrapitem;
+    public InventoryItemBase bombTrapitem;
+
 
 
     public Inventory()
@@ -39,20 +43,29 @@ public class Inventory : MonoBehaviour,  IcraftingItem
             ItemUsed(this, new IInventoryEventArgs(item));
         }
         if (isSelected)
+        {
             selectedObject_inventory = item.Name;
+            GameHandler.selectedObject = item.Name;
+        }
         else
+        {
             selectedObject_inventory = "";
+            GameHandler.selectedObject = "";
+
+        }
+
 
         item.OnUse(true);
     }
 
-    public void ConsumeItem(string itemName , InventoryItemBase item)
+    public bool ConsumeItem(string itemName , InventoryItemBase item)
     {
-        
+        bool isEnoughMaterial = false;
         if (itemName == "FleshBags")
         {
             if (mSlots[0].Remove(item))
             {
+                isEnoughMaterial = true;
                 if (ItemRemoved != null)
                 {
                     ItemRemoved(this, new IInventoryEventArgs(item));
@@ -65,6 +78,8 @@ public class Inventory : MonoBehaviour,  IcraftingItem
         {
             if (mSlots[1].Remove(item))
             {
+                isEnoughMaterial = true;
+
                 if (ItemRemoved != null)
                 {
                     ItemRemoved(this, new IInventoryEventArgs(item));
@@ -78,6 +93,8 @@ public class Inventory : MonoBehaviour,  IcraftingItem
         {
             if (mSlots[2].Remove(item))
             {
+                isEnoughMaterial = true;
+
                 if (ItemRemoved != null)
                 {
                     ItemRemoved(this, new IInventoryEventArgs(item));
@@ -86,6 +103,8 @@ public class Inventory : MonoBehaviour,  IcraftingItem
 
             }
         }
+
+        return isEnoughMaterial;
 
     }
 

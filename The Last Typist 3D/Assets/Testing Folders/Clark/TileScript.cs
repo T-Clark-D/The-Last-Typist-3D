@@ -48,22 +48,32 @@ public class TileScript : MonoBehaviour
 
             if (GameHandler.selectedObject == "FleshBags")
             {
-                instantiatedObject = Instantiate(fleshBagPrefab, gameObject.transform.position, new Quaternion(-0.50000006f, -0.49999994f, -0.49999997f, 0.50000006f));
-                //carve a whole in the nav mesh
-                if (!nmo.isActiveAndEnabled)
+                Inventory inv = FindObjectOfType<Inventory>();
+                if( inv.ConsumeItem("FleshBags", inv.fleshBagsitem))
                 {
-                    nmo.enabled = true;
-                    MR.material = hoverColor;
+                    instantiatedObject = Instantiate(fleshBagPrefab, gameObject.transform.position, new Quaternion(-0.50000006f, -0.49999994f, -0.49999997f, 0.50000006f));
+                    //carve a whole in the nav mesh
+                    if (!nmo.isActiveAndEnabled)
+                    {
+                        nmo.enabled = true;
+                        MR.material = hoverColor;
+                    }
+                    else
+                    {
+                        nmo.enabled = false;
+                        MR.material = offsetStatus ? offsetColor : baseColor;
+                    }
                 }
-                else
-                {
-                    nmo.enabled = false;
-                    MR.material = offsetStatus ? offsetColor : baseColor;
-                }
+                
             }
             if (GameHandler.selectedObject == "SpikeTraps")
             {
-                instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, Quaternion.identity);
+                Inventory inv = FindObjectOfType<Inventory>();
+                if(inv.ConsumeItem("SpikeTrap", inv.spikeTrapitem))
+                {
+                    instantiatedObject = Instantiate(spikesPrefab, gameObject.transform.position, Quaternion.identity);
+
+                }
 
             }
         }

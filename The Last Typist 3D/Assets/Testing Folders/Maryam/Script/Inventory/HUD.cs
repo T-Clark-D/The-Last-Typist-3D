@@ -82,12 +82,7 @@ public class HUD : MonoBehaviour
                 {
                     txtCount.text = itemCount.ToString();
                 }
-
-                if(itemCount == 0)
-                {
-                    image.enabled = false;
-                    image.sprite = null;
-                }
+                
                 break;
             }
         }

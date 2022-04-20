@@ -4,10 +4,10 @@ using UnityEngine.UI;
 
 public class ResourceManager : MonoBehaviour , IcraftingItem
 {
-    public static int MetalCount;
-    public static int FleshCount;
-    public static int GunPowderCount;
-    public static int ClothCount;
+    public static int MetalCount=5;
+    public static int FleshCount=4;
+    public static int GunPowderCount=6;
+    public static int ClothCount=8;
     Text MetalTxt ;
     Text FleshTxt;
     Text GunPowderTxt;
@@ -58,25 +58,27 @@ public class ResourceManager : MonoBehaviour , IcraftingItem
     // Update is called once per frame
     void Update()
     {
+        UpdateResources();
     }
 
     public void UpdateResources()
     {
         Transform MetalTransform = transform.Find("Metal").GetChild(0).GetChild(1);
         MetalTxt = MetalTransform.GetComponent<Text>();
-        MetalCount = int.Parse(MetalTxt.text);
+        MetalTxt.text = MetalCount.ToString();
 
         Transform FleshTransform = transform.Find("Flesh").GetChild(0).GetChild(1);
         FleshTxt = FleshTransform.GetComponent<Text>();
-        FleshCount = int.Parse(FleshTxt.text);
+        FleshTxt.text = FleshCount.ToString();
 
         Transform GunPowderTransform = transform.Find("GunPowder").GetChild(0).GetChild(1);
         GunPowderTxt = GunPowderTransform.GetComponent<Text>();
-        GunPowderCount = int.Parse(GunPowderTxt.text);
+        GunPowderTxt.text = GunPowderCount.ToString();
 
         Transform ClothTransform = transform.Find("Cloth").GetChild(0).GetChild(1);
         ClothTxt = ClothTransform.GetComponent<Text>();
-        ClothCount = int.Parse(ClothTxt.text);
+        ClothTxt.text = ClothCount.ToString();
+
     }
 
     public int itemCount(string itemName, InventoryItemBase item)
@@ -104,32 +106,55 @@ public class ResourceManager : MonoBehaviour , IcraftingItem
         return 0;
     }
 
-    public void ConsumeItem(string itemName , InventoryItemBase item)
+    public bool ConsumeItem(string itemName , InventoryItemBase item)
     {
 
+        bool isEnoughResource = false;
         if (itemName == "flesh")
         {
-            setFleshCount(FleshCount--);
-            FleshTxt.text = FleshCount.ToString();
+            if (FleshCount > 0)
+            {
+                setFleshCount(FleshCount--);
+                FleshTxt.text = FleshCount.ToString();
+                isEnoughResource = true;
+            }
+           
         }
 
         if (itemName == "cloth")
         {
-            setFleshCount(ClothCount--);
-            ClothTxt.text = ClothCount.ToString();
+            if(ClothCount > 0)
+            {
+                setFleshCount(ClothCount--);
+                ClothTxt.text = ClothCount.ToString();
+                isEnoughResource = true;
+
+            }
+
         }
 
         if (itemName == "metal")
         {
-            setFleshCount(MetalCount--);
-            MetalTxt.text = MetalCount.ToString();
+            if (MetalCount > 0)
+            {
+                setFleshCount(MetalCount--);
+                MetalTxt.text = MetalCount.ToString();
+                isEnoughResource = true;
+
+            }
         }
 
         if (itemName == "gunpowder")
         {
-            setFleshCount(GunPowderCount--);
-            GunPowderTxt.text = GunPowderCount.ToString();
+            if (GunPowderCount > 0)
+            {
+                setFleshCount(GunPowderCount--);
+                GunPowderTxt.text = GunPowderCount.ToString();
+                isEnoughResource = true;
+
+            }
         }
+        return isEnoughResource;
 
     }
 

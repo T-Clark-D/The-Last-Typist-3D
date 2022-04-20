@@ -25,6 +25,8 @@ public class GameHandler : MonoBehaviour
     public static bool buildMode;
     public bool resourceGatheringModeInitialised;
 
+    public Canvas hud;
+
     public static string selectedObject = "FleshBags";
 
     private void Awake()
@@ -46,6 +48,7 @@ public class GameHandler : MonoBehaviour
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
         spawnedEnemies = 0;
+        hud.gameObject.SetActive(false);
     }
 
     void Update()
@@ -60,7 +63,7 @@ public class GameHandler : MonoBehaviour
                     //Debug.Log("2sec interval");
                     if (spawnedEnemies < totalEnemyNum)
                     {
-                        int chosenZombie = Random.Range(0, 2);
+                        int chosenZombie = Random.Range(0, 1);
                         //Instantiate(basicZombie, new Vector3(4, 0, 0), Quaternion.identity);
                         //spawnedEnemies++;
                         SH.SpawnZombie(chosenZombie);
@@ -108,6 +111,7 @@ public class GameHandler : MonoBehaviour
 
         if (buildMode)
         {
+            hud.gameObject.SetActive(true);
             if (Input.GetKeyDown(KeyCode.R))
             {
                 buildMode = false;
@@ -129,7 +133,9 @@ public class GameHandler : MonoBehaviour
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
-        
+        hud.gameObject.SetActive(false);
+
+
     }
 
 }
