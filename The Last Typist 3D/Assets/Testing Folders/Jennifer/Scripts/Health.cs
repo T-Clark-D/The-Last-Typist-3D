@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class Health : MonoBehaviour
         {
             health = numOfHearts;
         }
+
         for(int i = 0; i < hearts.Length; i++)
         {
             if (i < health)
@@ -37,6 +39,11 @@ public class Health : MonoBehaviour
             }
             else
                 hearts[i].enabled = false;
+        }
+
+        if(health == 0)
+        {
+            SceneManager.LoadScene("GameOverScene");
         }
     }
 
