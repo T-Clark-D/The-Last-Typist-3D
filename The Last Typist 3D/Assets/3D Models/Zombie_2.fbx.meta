@@ -53,8 +53,8 @@ ModelImporter:
       name: Idle
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 1
-      lastFrame: 30
+      firstFrame: 2
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -82,8 +82,8 @@ ModelImporter:
       name: BombAttack
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 60
-      lastFrame: 100
+      firstFrame: 61
+      lastFrame: 99
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -111,8 +111,8 @@ ModelImporter:
       name: SlowWalk
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 130
-      lastFrame: 170
+      firstFrame: 131
+      lastFrame: 169
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -140,8 +140,8 @@ ModelImporter:
       name: FastWalk
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 190
-      lastFrame: 210
+      firstFrame: 191
+      lastFrame: 209
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -169,8 +169,8 @@ ModelImporter:
       name: Death
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 240
-      lastFrame: 270
+      firstFrame: 241
+      lastFrame: 269
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

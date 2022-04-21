@@ -56,8 +56,8 @@ ModelImporter:
       name: Idle
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 1
-      lastFrame: 30
+      firstFrame: 2
+      lastFrame: 29
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -85,8 +85,8 @@ ModelImporter:
       name: Jump
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 60
-      lastFrame: 100
+      firstFrame: 61
+      lastFrame: 99
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -114,8 +114,8 @@ ModelImporter:
       name: Walk_1
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 130
-      lastFrame: 170
+      firstFrame: 131
+      lastFrame: 169
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -143,8 +143,8 @@ ModelImporter:
       name: Walk_2
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 190
-      lastFrame: 280
+      firstFrame: 191
+      lastFrame: 279
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -172,8 +172,8 @@ ModelImporter:
       name: Walk_3
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 300
-      lastFrame: 330
+      firstFrame: 301
+      lastFrame: 329
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -201,8 +201,8 @@ ModelImporter:
       name: Death_Fall
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 350
-      lastFrame: 385
+      firstFrame: 351
+      lastFrame: 384
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -230,8 +230,8 @@ ModelImporter:
       name: Revive_Zombie_Comrade
       takeName: metarig|metarigAction
       internalID: 0
-      firstFrame: 400
-      lastFrame: 520
+      firstFrame: 401
+      lastFrame: 519
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
