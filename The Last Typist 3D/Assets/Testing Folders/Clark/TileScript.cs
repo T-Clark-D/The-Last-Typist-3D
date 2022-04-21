@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
 public class TileScript : MonoBehaviour
 {
@@ -45,9 +46,9 @@ public class TileScript : MonoBehaviour
     {
         if (GameHandler.buildMode)
         {
-            if (GameHandler.selectedObject == "")
+            if (GameHandler.selectedObject == "" || IsPointerOverUIElement())
             {
-
+                return;
             }
 
             if (GameHandler.selectedObject == "FleshBags")
@@ -88,4 +89,36 @@ public class TileScript : MonoBehaviour
             }
         }
     }
+
+    #region Actual miracle code https://answers.unity.com/questions/1095047/detect-mouse-events-for-ui-canvas.html
+
+    // Returns 'true' if we touched or hovering on Unity UI element.
+    public static bool IsPointerOverUIElement()
+    {
+        return IsPointerOverUIElement(GetEventSystemRaycastResults());
+    }
+
+    // Returns 'true' if we touched or hovering on Unity UI element.
+    public static bool IsPointerOverUIElement(List<RaycastResult> eventSystemRaysastResults)
+    {
+        for (int index = 0; index < eventSystemRaysastResults.Count; index++)
+        {
+            RaycastResult curRaysastResult = eventSystemRaysastResults[index];
+            if (curRaysastResult.gameObject.layer == LayerMask.NameToLayer("UI"))
+                return true;
+        }
+        return false;
+    }
+
+    // Gets all event systen raycast results of current mouse or touch position.
+    static List<RaycastResult> GetEventSystemRaycastResults()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = Input.mousePosition;
+        List<RaycastResult> raysastResults = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, raysastResults);
+        return raysastResults;
+    }
+
+    #endregion
 }
