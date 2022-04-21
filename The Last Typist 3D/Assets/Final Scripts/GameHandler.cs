@@ -45,15 +45,13 @@ public class GameHandler : MonoBehaviour
         waveMode = true;
         resourceGatheringModeInitialised = false;
         waveNum = 1;
-        totalEnemyNum = 1; //Random.Range((waveNum * 10) / 2, waveNum * 10);
-        fleshCount = 2;
+        totalEnemyNum = Random.Range((waveNum * 10) / 2, waveNum * 10);
+        fleshCount = 0;
         spawnedEnemies = 0;
         currentEnemyNum = totalEnemyNum;
         waveText.text = "Wave " + waveNum;
         enemyText.text = "Enemies Left: " + currentEnemyNum;
-        fleshText.text = "Flesh: " + fleshCount; 
-
-
+        fleshText.text = "Flesh: " + fleshCount;
     }
 
     void Update()
@@ -80,7 +78,7 @@ public class GameHandler : MonoBehaviour
 
             if (currentEnemyNum == 0)
             {
-                Debug.Log("Wave complete");
+                //Debug.Log("Wave complete");
                 waveMode = false;
                 resourceGatheringMode = true;
 
@@ -111,7 +109,7 @@ public class GameHandler : MonoBehaviour
             {
                 buildMode = true;
                 resourceGatheringMode = false;
-                Debug.Log("BUILD MODE ENTERED");
+                //Debug.Log("BUILD MODE ENTERED");
             }
             fleshText.text = "Flesh: " + fleshCount;
         }
@@ -132,9 +130,12 @@ public class GameHandler : MonoBehaviour
 
     void RestartWave()
     {
-        Debug.Log("NEW WAVE");
         resourceGatheringModeInitialised = false;
         waveNum++;
+        if (waitTime >= 0.5f)
+        {
+            waitTime -= 0.25f;
+        }
         spawnedEnemies = 0;
         totalEnemyNum = Random.Range((waveNum * 10) / 2, waveNum * 10);
         currentEnemyNum = totalEnemyNum;

@@ -21,24 +21,16 @@ public class SpawnHandler : MonoBehaviour
         spawnPointList = a.ToList();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     public void SpawnZombie(int type)
     {
         if (type == 0) // Basic Zombie
         {
-            Debug.Log("Basic zombie spawned!");
             int chosenSpawn = Random.Range(0, spawnPointList.Count);
             Instantiate(basicZombie, spawnPointList[chosenSpawn].transform.position, Quaternion.identity);
             GameHandler.spawnedEnemies++;
         }
         if (type == 1) // Bomber Zombie
         {
-            Debug.Log("Bomber zombie spawned!");
             int chosenSpawn = Random.Range(0, spawnPointList.Count);
             Instantiate(bomberZombie, spawnPointList[chosenSpawn].transform.position, Quaternion.identity);
             GameHandler.spawnedEnemies++;
