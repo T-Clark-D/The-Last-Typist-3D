@@ -29,7 +29,6 @@ public class BasicZombie : Enemies
             zombieController.StartOrStopWalkAnimation1();
             zombieController.DeathAnimation();
             gameObject.GetComponent<Enemies>().enabled = false;
-
         }
     }
 

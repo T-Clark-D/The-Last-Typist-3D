@@ -793,7 +793,8 @@ MonoBehaviour:
   anchoredText: {fileID: 0}
   killed: 0
   m_wordLength: 5
-  explosionRadius: 0
+  explosionRadius: 5
+  capsuleCollider: {fileID: 0}
 --- !u!114 &4561419806885290905
 MonoBehaviour:
   m_ObjectHideFlags: 0

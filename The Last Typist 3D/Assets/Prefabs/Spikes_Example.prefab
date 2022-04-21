@@ -1302,6 +1302,8 @@ GameObject:
   - component: {fileID: 3315294040646930054}
   - component: {fileID: 3315294040646930049}
   - component: {fileID: 1639750100916787742}
+  - component: {fileID: 6311667352423128445}
+  - component: {fileID: -4594799905332448369}
   m_Layer: 0
   m_Name: Spikes_Example
   m_TagString: SpikeTrap
@@ -1402,6 +1404,35 @@ MonoBehaviour:
   - {fileID: 3315294038992653768}
   - {fileID: 3315294039278826167}
   - {fileID: 3315294040073991505}
+--- !u!65 &6311667352423128445
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3315294040646930048}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.012817497, y: 0.012576386, z: 0.012751911}
+  m_Center: {x: -0.00005048939, y: -0.0002473942, z: 0.005306584}
+--- !u!54 &-4594799905332448369
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3315294040646930048}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!1 &3315294040708154184
 GameObject:
   m_ObjectHideFlags: 0

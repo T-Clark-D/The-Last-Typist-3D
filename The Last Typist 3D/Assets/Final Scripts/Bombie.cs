@@ -6,9 +6,15 @@ public class Bombie : Enemies
 {
     public int m_wordLength = 5;
     public float explosionRadius;
-
+    public CapsuleCollider capsuleCollider;
+    private bool exploded;
 
     BombZombie_Controller bombZombieController;
+
+    private void Awake()
+    {
+        capsuleCollider = GetComponent<CapsuleCollider>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -37,6 +43,49 @@ public class Bombie : Enemies
             bombZombieController.StartOrStopSlowWalkAnimation();
             bombZombieController.DeathAnimation();
             gameObject.GetComponent<Enemies>().enabled = false;
+        }
+        if (exploded)
+        {
+            bombZombieController.StartOrStopSlowWalkAnimation();
+            bombZombieController.TriggerAttackAnimation();
+            bombZombieController.DeathAnimation();
+            GameHandler.currentEnemyNum--;
+            Destroy(anchoredText, 2.916f);
+            Destroy(gameObject, 2.917f);
+        }
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("[BOMBIE] Bomber zombie collided with object.");
+        if (other.tag == "Player"
+            || other.tag == "MeatGrinder"
+            || other.tag == "SandBag"
+            || other.tag == "SpikeTrap")
+        {
+            m_speed = 0;
+            Debug.Log("[BOMBIE] Collided with "+other.tag);
+            Explode();
+        }
+    }
+
+    private void Explode()
+    {
+        exploded = true;
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (var hitCollider in hitColliders)
+        {
+            Debug.Log("[BOMBIE] Caught in explosion: " + hitCollider.gameObject.tag);
+            if (hitCollider.gameObject.tag == "SandBag"
+                || hitCollider.gameObject.tag == "SpikeTrap")
+            {
+                Destroy(hitCollider.gameObject, 1.667f);
+            }
+            else if (hitCollider.gameObject.tag == "MeatGrinder")
+            {
+                Debug.Log("[BOMBIE] Meat grinder has taken damage!");
+            }
         }
     }
 
