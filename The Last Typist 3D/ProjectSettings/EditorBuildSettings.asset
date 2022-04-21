@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Final Scenes/GameScene.unity
     guid: 4a6e656b29299a0488798adb1f7192d6
+  - enabled: 1
+    path: Assets/Testing Folders/Jennifer/GameOverScene.unity
+    guid: b1bd9731d216c3244adde6f08b41c3fd
   m_configObjects: {}

@@ -46,6 +46,7 @@ public class Bombie : Enemies
         }
         if (exploded)
         {
+            exploded = !exploded;
             bombZombieController.StartOrStopSlowWalkAnimation();
             bombZombieController.TriggerAttackAnimation();
             bombZombieController.DeathAnimation();
@@ -84,7 +85,9 @@ public class Bombie : Enemies
             }
             else if (hitCollider.gameObject.tag == "MeatGrinder")
             {
-                Debug.Log("[BOMBIE] Meat grinder has taken damage!");
+                Debug.Log("[BOMBIE] Meatgrinder struck! Game over...");
+                Destroy(hitCollider.gameObject, 1.667f);
+                Health.health = 0;
             }
         }
     }

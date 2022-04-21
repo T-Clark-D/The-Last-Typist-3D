@@ -3392,8 +3392,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1376751957}
-  m_LocalRotation: {x: 0.16470893, y: 0.4556666, z: -0.08621551, w: 0.8705204}
-  m_LocalPosition: {x: 41.446815, y: 3.144011, z: 46.15509}
+  m_LocalRotation: {x: 0.1647089, y: 0.4556667, z: -0.0862155, w: 0.8705204}
+  m_LocalPosition: {x: 41.44681, y: 3.1440115, z: 46.15509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1888472847}
@@ -4564,8 +4564,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874179710}
-  m_LocalRotation: {x: 0.16470893, y: 0.4556666, z: -0.08621551, w: 0.8705204}
-  m_LocalPosition: {x: 41.446815, y: 3.144011, z: 46.15509}
+  m_LocalRotation: {x: 0.1647089, y: 0.4556667, z: -0.0862155, w: 0.8705204}
+  m_LocalPosition: {x: 41.44681, y: 3.1440115, z: 46.15509}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4947,7 +4947,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45fc8c34d998d4a4f92a47745edffd21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
   numOfHearts: 5
   hearts:
   - {fileID: 1176434446}
@@ -5736,7 +5735,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2132322820}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 49.23, y: 0, z: 61.57}
+  m_LocalPosition: {x: 51, y: 0, z: 61.57}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 143056134}

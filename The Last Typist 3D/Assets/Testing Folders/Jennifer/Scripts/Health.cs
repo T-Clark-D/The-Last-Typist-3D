@@ -6,12 +6,18 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
-    public int health; 
+    public static int health; 
     public int numOfHearts;
 
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+
+    private void Start()
+    {
+        // Start the game with some health
+        health = numOfHearts;
+    }
 
     void Update()
     {
@@ -47,9 +53,9 @@ public class Health : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "NPC")
+        if(other.gameObject.tag == "NPC")
         {
             health -= 1; // dmg
         }

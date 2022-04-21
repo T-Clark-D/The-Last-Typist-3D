@@ -56,4 +56,14 @@ public class NavMeshAgentAI : MonoBehaviour
 
         return distance;
     }
+
+    public void setSpeed(float speed)
+    {
+        agent.speed = speed;
+    }
+
+    public float getSpeed()
+    {
+        return agent.speed;
+    }
 }

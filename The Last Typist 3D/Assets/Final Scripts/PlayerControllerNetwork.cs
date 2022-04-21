@@ -6,6 +6,7 @@ using System.Linq;
 
 public class PlayerControllerNetwork : MonoBehaviour
 {
+    #region Member Variables
     public float m_speed;
 
     private bool m_isCombatMode;
@@ -27,7 +28,7 @@ public class PlayerControllerNetwork : MonoBehaviour
 
     public MainCharacter_Controller MCC;
     private bool isWalking = false;
-
+    #endregion
 
     // Start is called before the first frame update
     void Start()
@@ -45,7 +46,6 @@ public class PlayerControllerNetwork : MonoBehaviour
     void Update()
     {
         m_RT.position = m_cam.WorldToScreenPoint(m_playerAnchor.transform.position);
-
         if (GameHandler.waveMode)
         {
             if (m_isCombatMode)
@@ -65,7 +65,6 @@ public class PlayerControllerNetwork : MonoBehaviour
                 m_writtenText.text = "";
             }
         }
-
         if (GameHandler.resourceGatheringMode)
         {
             GetTextInput();
@@ -75,7 +74,6 @@ public class PlayerControllerNetwork : MonoBehaviour
                 m_writtenText.text = "";
             }
         }
-
         if (GameHandler.buildMode)
         {
             if (Input.GetKeyDown(KeyCode.R))
@@ -84,7 +82,6 @@ public class PlayerControllerNetwork : MonoBehaviour
                 MCC.SwitchMode();
             }
         }
-
     }
 
     private void Movement()

@@ -68,10 +68,10 @@ public class GameHandler : MonoBehaviour
                     //Debug.Log("2sec interval");
                     if (spawnedEnemies < totalEnemyNum)
                     {
-                        int chosenZombie = Random.Range(0, 3);
+                        int chosenZombie = Random.Range(0, 2);
                         //Instantiate(basicZombie, new Vector3(4, 0, 0), Quaternion.identity);
                         //spawnedEnemies++;
-                        chosenZombie = 2;
+                        //chosenZombie = 2;
                         SH.SpawnZombie(chosenZombie);
                     }
                     timer = 0;
