@@ -63,17 +63,19 @@ public class TileScript : MonoBehaviour
                     Debug.Log("Not enough Flesh");
                 }
 
-                //carve a whole in the nav mesh
-                if (!nmo.isActiveAndEnabled)
+                //carve a hole in the nav mesh
+                if (!nmo.isActiveAndEnabled && GameHandler.fleshCount >= 1)
                 {
                     nmo.enabled = true;
                     MR.material = hoverColor;
                 }
+/*
                 else
                 {
                     nmo.enabled = false;
                     MR.material = offsetStatus ? offsetColor : baseColor;
                 }
+*/
             }
             if (GameHandler.selectedObject == "SpikeTraps")
             {

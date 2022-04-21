@@ -7,6 +7,7 @@ public class Enemies : Targetable
 {
     public Rigidbody m_RB;
     public GameObject m_player;
+    public GameObject m_meatGrinder;
     public GameObject m_enemyTextPrefab;
     public float m_speed;
     public WordVomit WV;
@@ -22,6 +23,7 @@ public class Enemies : Targetable
         m_RB = GetComponent<Rigidbody>();
         WV = GameObject.Find("WordVomit").GetComponent<WordVomit>();
         m_player = GameObject.Find("SpherePlayer");
+        m_meatGrinder = GameObject.Find("MeatGrinder");
         killed = false;
     }
 

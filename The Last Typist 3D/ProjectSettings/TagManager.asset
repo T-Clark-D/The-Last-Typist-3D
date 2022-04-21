@@ -8,6 +8,9 @@ TagManager:
   - corpse
   - vcam1
   - SpawnPoint
+  - SandBag
+  - SpikeTrap
+  - MeatGrinder
   layers:
   - Default
   - TransparentFX

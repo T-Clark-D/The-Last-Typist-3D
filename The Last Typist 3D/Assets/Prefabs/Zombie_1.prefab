@@ -696,6 +696,7 @@ GameObject:
   - component: {fileID: 4089237435751647137}
   - component: {fileID: -932438717370419152}
   - component: {fileID: 3832391682337718105}
+  - component: {fileID: 8473996806775364156}
   m_Layer: 0
   m_Name: Zombie_1
   m_TagString: NPC
@@ -755,6 +756,7 @@ MonoBehaviour:
   anchor: {fileID: 4089237435646629730}
   m_RB: {fileID: 0}
   m_player: {fileID: 0}
+  m_meatGrinder: {fileID: 0}
   m_enemyTextPrefab: {fileID: 2602374514496074786, guid: a03926ff729f9154dbff6feb3fcc06aa, type: 3}
   m_speed: 1
   WV: {fileID: 0}
@@ -811,6 +813,20 @@ MonoBehaviour:
   target: {fileID: 0}
   meatGrinder: {fileID: 0}
   remainingDistance: 0
+--- !u!136 &8473996806775364156
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3782612581305979753}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.38
+  m_Height: 2.01
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!1 &4020583476373934924
 GameObject:
   m_ObjectHideFlags: 0

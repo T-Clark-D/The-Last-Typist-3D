@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 2173636802387525770}
   m_Layer: 0
   m_Name: MeatGrinder
-  m_TagString: Untagged
+  m_TagString: MeatGrinder
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

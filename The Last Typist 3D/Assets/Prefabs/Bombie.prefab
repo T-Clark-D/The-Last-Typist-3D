@@ -726,6 +726,7 @@ GameObject:
   - component: {fileID: 4561419806885290905}
   - component: {fileID: 8269407013476153031}
   - component: {fileID: 4876785034498440712}
+  - component: {fileID: 7042953622830008324}
   m_Layer: 0
   m_Name: Bombie
   m_TagString: NPC
@@ -785,12 +786,14 @@ MonoBehaviour:
   anchor: {fileID: 4561419807022983383}
   m_RB: {fileID: 0}
   m_player: {fileID: 0}
+  m_meatGrinder: {fileID: 0}
   m_enemyTextPrefab: {fileID: 2602374514496074786, guid: a03926ff729f9154dbff6feb3fcc06aa, type: 3}
   m_speed: 1
   WV: {fileID: 0}
   anchoredText: {fileID: 0}
   killed: 0
   m_wordLength: 5
+  explosionRadius: 0
 --- !u!114 &4561419806885290905
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -811,7 +814,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3714347041696587478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 1
@@ -833,7 +836,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3714347041696587478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: af0151e1c074dff4e8f3941472d9969b, type: 3}
   m_Name: 
@@ -841,6 +844,20 @@ MonoBehaviour:
   target: {fileID: 0}
   meatGrinder: {fileID: 0}
   remainingDistance: 0
+--- !u!136 &7042953622830008324
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3714347041696587478}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.38
+  m_Height: 2.01
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.95, z: 0}
 --- !u!1 &3735940474931530420
 GameObject:
   m_ObjectHideFlags: 0

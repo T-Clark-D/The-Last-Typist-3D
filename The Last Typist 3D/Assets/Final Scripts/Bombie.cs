@@ -5,6 +5,9 @@ using UnityEngine;
 public class Bombie : Enemies
 {
     public int m_wordLength = 5;
+    public float explosionRadius;
+
+
     BombZombie_Controller bombZombieController;
 
     // Start is called before the first frame update
@@ -22,13 +25,13 @@ public class Bombie : Enemies
     // Update is called once per frame
     void Update()
     {
-        //if (gameObject.tag == "NPC")
-        //{
-        //    Vector3 direction = (m_player.transform.position - transform.position).normalized;
-        //    Vector3 velocity = direction * m_speed;
-        //    transform.LookAt(m_player.transform.position);
-        //    transform.position = (transform.position + velocity * Time.deltaTime);
-        //}
+        if (gameObject.tag == "NPC")
+        {
+            Vector3 direction = (m_meatGrinder.transform.position - transform.position).normalized;
+            Vector3 velocity = direction * m_speed;
+            transform.LookAt(m_meatGrinder.transform.position);
+            transform.position = (transform.position + velocity * Time.deltaTime);
+        }
         if (killed)
         {
             bombZombieController.StartOrStopSlowWalkAnimation();
