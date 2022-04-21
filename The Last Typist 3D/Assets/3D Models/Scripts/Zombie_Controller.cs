@@ -39,4 +39,9 @@ public class Zombie_Controller : MonoBehaviour
     {
         anim.SetTrigger("die");
     }
+
+    public void ReviveAnimation()
+    {
+        anim.SetTrigger("revive");
+    }
 }

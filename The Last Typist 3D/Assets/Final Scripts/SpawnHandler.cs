@@ -9,6 +9,7 @@ public class SpawnHandler : MonoBehaviour
     // Prefabs for zombies
     public GameObject basicZombie;
     public GameObject bomberZombie;
+    public GameObject witchDoctorZombie;
     // List of spawn points for zombies
     public List<GameObject> spawnPointList;
     #endregion
@@ -40,6 +41,13 @@ public class SpawnHandler : MonoBehaviour
             Debug.Log("Bomber zombie spawned!");
             int chosenSpawn = Random.Range(0, spawnPointList.Count);
             Instantiate(bomberZombie, spawnPointList[chosenSpawn].transform.position, Quaternion.identity);
+            GameHandler.spawnedEnemies++;
+        }
+        if (type == 2) // Witch Doctor Zombie
+        {
+            Debug.Log("Witch Doctor zombie spawned!");
+            int chosenSpawn = Random.Range(0, spawnPointList.Count);
+            Instantiate(witchDoctorZombie, spawnPointList[chosenSpawn].transform.position, Quaternion.identity);
             GameHandler.spawnedEnemies++;
         }
     }
