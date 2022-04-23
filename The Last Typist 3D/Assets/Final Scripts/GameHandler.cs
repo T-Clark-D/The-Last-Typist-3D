@@ -69,7 +69,7 @@ public class GameHandler : MonoBehaviour
                         int chosenZombie = Random.Range(0, 2);
                         //Instantiate(basicZombie, new Vector3(4, 0, 0), Quaternion.identity);
                         //spawnedEnemies++;
-                        //chosenZombie = 2;
+                        chosenZombie = 0;
                         SH.SpawnZombie(chosenZombie);
                     }
                     timer = 0;
