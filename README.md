@@ -1,4 +1,4 @@
-# The-Last-Typist-3D
+# The Last Typist 3D
 ## The situation spells disaster
 A 3D Typing game developped in c# with Unity where you kill zombies by typing the words above their heads as they path-find towards you. Between rounds, edit your base with barricades and spike traps. The goal is to make typing fun while improving the player improves their speed. Made as a proof of concept, it is not quite finished.
 Project Demo https://youtu.be/4budZakfaIE
